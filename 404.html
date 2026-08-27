@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO — aggiornato dinamicamente da app.js -->
+  <title>Andrea Ciosti Cetica — Drummer</title>
+  <meta name="description" content="Batterista, percussionista e sound lover. Passione, groove e ricerca sonora." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tuodominio.com" id="canonical-tag" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Andrea Ciosti Cetica — Drummer" id="og-title" />
+  <meta property="og:description" content="Batterista, percussionista e sound lover." id="og-desc" />
+  <meta property="og:image" content="https://tuodominio.com/assets/images/og-cover.jpg" id="og-image" />
+  <meta property="og:url" content="https://tuodominio.com" id="og-url" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Andrea Ciosti Cetica — Drummer" id="tw-title" />
+  <meta name="twitter:description" content="Batterista, percussionista e sound lover." id="tw-desc" />
+  <meta name="twitter:image" content="https://tuodominio.com/assets/images/og-cover.jpg" id="tw-image" />
+
+  <!-- Google Fonts: Bebas Neue (titoli) + DM Sans (body) + JetBrains Mono (accenti) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Marked.js per il parsing Markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
+
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-inner">
+      <svg class="loader-logo" viewBox="0 0 60 60" fill="none">
+        <polygon points="30,4 56,52 4,52" stroke="#e8005a" stroke-width="2.5" fill="none" class="loader-triangle"/>
+        <circle cx="30" cy="38" r="7" fill="#e8005a" class="loader-circle"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- CUSTOM CURSOR (solo desktop) -->
+  <div id="cursor"></div>
+  <div id="cursor-follower"></div>
+
+  <!-- HEADER -->
+  <header id="header">
+    <nav class="nav-inner">
+
+      <a href="/" class="logo" data-link="/">
+        <svg class="logo-svg" viewBox="0 0 60 60" fill="none">
+          <polygon points="30,4 56,52 4,52" stroke="#e8005a" stroke-width="2.5" fill="none"/>
+          <circle cx="30" cy="38" r="7" fill="#e8005a"/>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-name">ANDREA</span>
+          <span class="logo-sub">CIOSTI CETICA</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/"         data-link="/"         data-it="HOME"     data-en="HOME">HOME</a></li>
+        <li><a href="/bio"      data-link="/bio"       data-it="BIO"      data-en="BIO">BIO</a></li>
+        <li><a href="/musica"   data-link="/musica"    data-it="MUSICA"   data-en="MUSIC">MUSICA</a></li>
+        <li><a href="/gallery"  data-link="/gallery"   data-it="GALLERY"  data-en="GALLERY">GALLERY</a></li>
+        <li><a href="/blog"     data-link="/blog"      data-it="NEWS"     data-en="NEWS">NEWS</a></li>
+        <li><a href="/contatti" data-link="/contatti"  data-it="CONTATTI" data-en="CONTACT">CONTATTI</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="social-icons">
+          <a href="#" class="social-icon" id="nav-instagram" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="social-icon" id="nav-youtube" aria-label="YouTube" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="social-icon" id="nav-spotify" aria-label="Spotify" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 13.5c2.5-1 5.5-.8 7.5.5M7.5 10.5c3-1.2 6.5-1 9 .5M9 16.5c2-0.8 4.5-.6 6 .5"/></svg>
+          </a>
+        </div>
+
+        <button class="lang-switch" id="lang-switch" aria-label="Cambia lingua">
+          <span id="lang-label">EN</span>
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Apri menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Chiudi menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <ul>
+      <li><a href="/"         data-link="/"         data-it="HOME"     data-en="HOME">HOME</a></li>
+      <li><a href="/bio"      data-link="/bio"       data-it="BIO"      data-en="BIO">BIO</a></li>
+      <li><a href="/musica"   data-link="/musica"    data-it="MUSICA"   data-en="MUSIC">MUSICA</a></li>
+      <li><a href="/gallery"  data-link="/gallery"   data-it="GALLERY"  data-en="GALLERY">GALLERY</a></li>
+      <li><a href="/blog"     data-link="/blog"      data-it="NEWS"     data-en="NEWS">NEWS</a></li>
+      <li><a href="/contatti" data-link="/contatti"  data-it="CONTATTI" data-en="CONTACT">CONTATTI</a></li>
+    </ul>
+  </div>
+
+  <!-- APP — il JS inietta qui tutto il contenuto delle pagine -->
+  <main id="app"></main>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <svg class="footer-logo-svg" viewBox="0 0 60 60" fill="none">
+          <polygon points="30,4 56,52 4,52" stroke="#e8005a" stroke-width="2.5" fill="none"/>
+          <circle cx="30" cy="38" r="7" fill="#e8005a"/>
+        </svg>
+        <span class="footer-name">ANDREA<br>CIOSTI CETICA</span>
+        <div class="footer-socials">
+          <a href="#" id="footer-instagram" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" id="footer-youtube" aria-label="YouTube" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" id="footer-spotify" aria-label="Spotify" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 13.5c2.5-1 5.5-.8 7.5.5M7.5 10.5c3-1.2 6.5-1 9 .5M9 16.5c2-0.8 4.5-.6 6 .5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-it="LINK" data-en="LINK">LINK</h4>
+        <ul>
+          <li><a href="/"         data-link="/"        data-it="Home"     data-en="Home">Home</a></li>
+          <li><a href="/bio"      data-link="/bio"      data-it="Bio"      data-en="Bio">Bio</a></li>
+          <li><a href="/musica"   data-link="/musica"   data-it="Musica"   data-en="Music">Musica</a></li>
+          <li><a href="/gallery"  data-link="/gallery"  data-it="Gallery"  data-en="Gallery">Gallery</a></li>
+          <li><a href="/blog"     data-link="/blog"     data-it="News"     data-en="News">News</a></li>
+          <li><a href="/contatti" data-link="/contatti" data-it="Contatti" data-en="Contact">Contatti</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-it="CONTATTI" data-en="CONTACT">CONTATTI</h4>
+        <ul>
+          <li><a id="footer-email-link" href="mailto:info@tuodominio.com">info@tuodominio.com</a></li>
+          <li id="footer-phone">+39 000 0000000</li>
+          <li id="footer-city">Milano, Italia</li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-newsletter">
+        <h4>NEWSLETTER</h4>
+        <p data-it="Rimani aggiornato su live, nuovi progetti e releases." data-en="Stay updated on live shows, new projects and releases.">Rimani aggiornato su live, nuovi progetti e releases.</p>
+        <div class="newsletter-form">
+          <input type="email" id="newsletter-input" data-it-placeholder="La tua email" data-en-placeholder="Your email" placeholder="La tua email" />
+          <button class="btn-send" aria-label="Iscriviti">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span id="footer-copy">© 2024 Andrea Ciosti Cetica — All rights reserved</span>
+      <div class="footer-legal">
+        <a href="/privacy" data-link="/privacy">Privacy Policy</a>
+        <span>|</span>
+        <a href="/cookie" data-link="/cookie">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
