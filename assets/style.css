@@ -936,6 +936,7 @@ section { padding: 6rem 2rem; }
   margin-top: 3rem;
   align-items: start;
 }
+.contatti-grid-single { grid-template-columns: 1fr; }
 .contatti-info p {
   font-size: 0.975rem;
   color: var(--white2);
@@ -958,32 +959,7 @@ section { padding: 6rem 2rem; }
 .contact-item-text { font-size: 0.9rem; color: var(--white2); }
 .contact-item-text a { transition: color var(--transition); }
 .contact-item-text a:hover { color: var(--accent); }
-.contatti-form { display: flex; flex-direction: column; gap: 1rem; }
-.form-field {
-  display: flex; flex-direction: column; gap: 0.4rem;
-}
-.form-field label {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  color: var(--grey3);
-}
-.form-field input,
-.form-field textarea {
-  background: var(--black2);
-  border: 1px solid var(--grey);
-  color: var(--white);
-  padding: 0.9rem 1rem;
-  border-radius: var(--radius);
-  font-size: 0.9rem;
-  transition: border-color var(--transition);
-  outline: none;
-}
-.form-field input:focus,
-.form-field textarea:focus { border-color: var(--accent); }
-.form-field textarea { min-height: 140px; resize: vertical; }
-
-/* ── FOOTER ──────────────────────────────────────────────────── */
+/* ── FOOTER──────────────────────────────────────────────────── */
 #footer {
   background: var(--black2);
   border-top: 1px solid var(--grey);

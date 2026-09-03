@@ -701,57 +701,34 @@ async function renderContatti() {
   $('#app').innerHTML = `
     <div class="contatti-page page-enter">
       <div class="contatti-inner">
-        <span class="section-label reveal" data-it="CONTATTI" data-en="CONTACT">${state.lang === 'it' ? 'CONTATTI' : 'CONTACT'}</span>
-        <h1 class="section-title reveal" data-it="SCRIVIMI" data-en="GET IN TOUCH">${state.lang === 'it' ? 'SCRIVIMI' : 'GET IN TOUCH'}</h1>
-        <div class="contatti-grid">
-          <div class="contatti-info reveal">
+        <span class="section-label reveal" data-it="CONTATTI" data-en="CONTACT" style="text-align:center;display:block">${state.lang === 'it' ? 'CONTATTI' : 'CONTACT'}</span>
+        <h1 class="section-title reveal" data-it="SCRIVIMI" data-en="GET IN TOUCH" style="text-align:center">${state.lang === 'it' ? 'SCRIVIMI' : 'GET IN TOUCH'}</h1>
+        <div class="contatti-grid contatti-grid-single">
+          <div class="contatti-info reveal" style="text-align:center;max-width:520px;margin:0 auto">
             <p data-it="Hai un progetto, una collaborazione o vuoi semplicemente salutare? Scrivimi, rispondo a tutti."
                data-en="Have a project, collaboration or just want to say hi? Write me, I reply to everyone.">
               ${state.lang === 'it'
                 ? 'Hai un progetto, una collaborazione o vuoi semplicemente salutare? Scrivimi, rispondo a tutti.'
                 : 'Have a project, collaboration or just want to say hi? Write me, I reply to everyone.'}
             </p>
-            <div class="contact-item">
+            <div class="contact-item" style="justify-content:center">
               <div class="contact-item-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
               <div class="contact-item-text"><a href="mailto:${email}">${email}</a></div>
             </div>
-            <div class="contact-item">
+            <div class="contact-item" style="justify-content:center">
               <div class="contact-item-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-.76a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
               </div>
               <div class="contact-item-text">${tel}</div>
             </div>
-            <div class="contact-item">
+            <div class="contact-item" style="justify-content:center">
               <div class="contact-item-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
               <div class="contact-item-text">${citta}</div>
             </div>
-          </div>
-          <div class="contatti-form reveal">
-            <div class="form-field">
-              <label data-it="NOME" data-en="NAME">${state.lang === 'it' ? 'NOME' : 'NAME'}</label>
-              <input type="text" placeholder="${state.lang === 'it' ? 'Il tuo nome' : 'Your name'}" />
-            </div>
-            <div class="form-field">
-              <label>EMAIL</label>
-              <input type="email" placeholder="${state.lang === 'it' ? 'La tua email' : 'Your email'}" />
-            </div>
-            <div class="form-field">
-              <label data-it="MESSAGGIO" data-en="MESSAGE">${state.lang === 'it' ? 'MESSAGGIO' : 'MESSAGE'}</label>
-              <textarea placeholder="${state.lang === 'it' ? 'Scrivi qui il tuo messaggio...' : 'Write your message here...'}"></textarea>
-            </div>
-            <button class="btn-primary" style="align-self:flex-start;margin-top:.5rem" data-it="INVIA MESSAGGIO" data-en="SEND MESSAGE">
-              ${state.lang === 'it' ? 'INVIA MESSAGGIO' : 'SEND MESSAGE'}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
-            <p style="font-size:.75rem;color:var(--grey3);margin-top:.5rem" data-it="Il form è estetico — collega un servizio come Formspree o Netlify Forms per ricevere i messaggi." data-en="This form is decorative — connect a service like Formspree or Netlify Forms to receive messages.">
-              ${state.lang === 'it'
-                ? '⚠ Il form è estetico — collega un servizio come Formspree per ricevere i messaggi.'
-                : '⚠ This form is decorative — connect a service like Formspree to receive messages.'}
-            </p>
           </div>
         </div>
       </div>
