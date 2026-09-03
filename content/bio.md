@@ -12,7 +12,7 @@ seo_desc_en: Discover the story of Andrea Ciosti Cetica, drummer and percussioni
 
 ## La storia
 
-Sono Andrea Ciosti Cetica, batterista e percussionista con oltre dieci anni di esperienza sul palco e in studio. Ho iniziato a suonare la batteria da ragazzo, affascinato dal ritmo come linguaggio universale capace di attraversare culture e generi.
+Sono Andrea Ciosti Cetica, batterista e percussionista con oltre dieci anni di esperienza sul palco e in studio. Ho iniziato a suonare la batteria da ragazzo affascinato dal ritmo come linguaggio universale capace di attraversare culture e generi.
 
 La mia formazione è ibrida: ho studiato jazz, rock progressivo e musica africana, cercando sempre di portare qualcosa di personale in ogni progetto. Non mi interessa la tecnica fine a se stessa: quello che cerco è il groove, la sensazione fisica che una buona ritmica trasmette al corpo.
 
