@@ -258,12 +258,13 @@ async function renderHome() {
       <div class="section-inner bio-grid">
         <div class="bio-image reveal">
           <div class="bio-image-line"></div>
-          ${placeholderImg('bio')}
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/FeCcAQFvMUE" title="Andrea Ciosti Cetica" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
         </div>
         <div class="bio-text reveal">
           <span class="section-label">BIO</span>
           <h2 class="section-title" data-it="CHI SONO" data-en="ABOUT ME">${state.lang === 'it' ? 'CHI SONO' : 'ABOUT ME'}</h2>
-          <div class="bio-short">${marked.parse(extractLang(hBody, state.lang).slice(0, 600))}</div>
+          <div cl
+          ass="bio-short">${marked.parse(extractLang(hBody, state.lang).slice(0, 600))}</div>
           <div class="bio-stats">
             <div class="stat-item">
               <span class="stat-number">${hMeta.anni_esperienza || '10'}+</span>
