@@ -5,7 +5,7 @@
 
 titolo_it: Chi Sono
 titolo_en: About Me
-immagine: IO_NUDO.jpg
+immagine: foto_bio.jpg
 seo_desc_it: Scopri la storia di Andrea Ciosti Cetica, batterista e percussionista.
 seo_desc_en: Discover the story of Andrea Ciosti Cetica, drummer and percussionist.
 ---
