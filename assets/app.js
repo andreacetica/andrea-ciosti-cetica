@@ -248,12 +248,7 @@ async function renderHome() {
             SCOPRI DI PIÙ
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <button class="btn-play" onclick="void(0)">
-            <div class="play-circle">
-              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            </div>
-            <div class="play-label" data-it="ASCOLTA<br>IL MIO SOUND" data-en="LISTEN TO<br>MY SOUND">ASCOLTA<br>IL MIO SOUND</div>
-          </button>
+          <a href="${s.spotify || '#'}" target="_blank" rel="noopener" class="btn-play"> <div class="play-circle"> <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg> </div> <div class="play-label" data-it="ASCOLTA<br>IL MIO SOUND" data-en="LISTEN TO<br>MY SOUND">ASCOLTA<br>IL MIO SOUND</div> </a>
         </div>
       </div>
     </section>

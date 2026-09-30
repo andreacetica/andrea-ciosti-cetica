@@ -10,7 +10,7 @@ tagline_it: Passione, groove e ricerca sonora. Il ritmo è il mio linguaggio.
 tagline_en: Passion, groove and sonic research. Rhythm is my language.
 
 # ── STATISTICHE ──────────────────────────────────────────
-anni_esperienza: 10
+anni_esperienza: 30
 concerti: 200
 album: 12
 

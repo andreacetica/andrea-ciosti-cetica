@@ -22,7 +22,7 @@ citta: Milano, Italia
 # ── SOCIAL ───────────────────────────────────────────────
 instagram: https://instagram.com/tuoprofilo
 youtube: https://youtube.com/@tuocanale
-spotify: https://open.spotify.com/artist/tuoid
+spotify: https://open.spotify.com/artist/5GjTujdCOrZnZWFh38smdR
 
 # ── FOOTER ───────────────────────────────────────────────
 anno: 2024

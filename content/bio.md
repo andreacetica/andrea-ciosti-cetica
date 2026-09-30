@@ -12,38 +12,32 @@ seo_desc_en: Discover the story of Andrea Ciosti Cetica, drummer and percussioni
 
 ## La storia
 
-Sono Andrea Ciosti Cetica, batterista e percussionista con oltre dieci anni di esperienza sul palco e in studio. Ho iniziato a suonare la batteria da ragazzo affascinato dal ritmo come linguaggio universale capace di attraversare culture e generi.
+Sono Andrea Ciosti Cetica, batterista e percussionista. Ho iniziato da bambino, con la chitarra di mio babbo, affascinato dal ritmo come linguaggio universale capace di attraversare culture e generi.
 
-La mia formazione è ibrida: ho studiato jazz, rock progressivo e musica africana, cercando sempre di portare qualcosa di personale in ogni progetto. Non mi interessa la tecnica fine a se stessa: quello che cerco è il groove, la sensazione fisica che una buona ritmica trasmette al corpo.
+Ho proseguito privatamente con Claudio Cuseri, maestro di strumento e di vita, poi il percorso si è fatto più strutturato: l'UM - Università della Musica a Roma, il Conservatorio Morlacchi di Perugia, Siena Jazz, fino al Master al Collective di New York. Una formazione lunga e varia, che ho sempre messo al servizio di jazz, rock, blues, pop e musica elettronica. Mi interessa la musica e l'emozione che fa crescere: l'emozione è la prima sensazione che deve essere avvertita.
 
 ## Sul palco
 
-Ho suonato in tutta Italia e in Europa, in festival, club e teatri. Ogni live è un'esperienza diversa: il rapporto con il pubblico, con gli altri musicisti, con l'acustica del posto. Il palco mi tiene sveglio.
-
-## In studio
-
-In studio lavoro come session drummer e come produttore di parti ritmiche. Ho collaborato con artisti di vari generi — dal pop alternativo all'elettronica, dall'indie al jazz fusion. Credo che la batteria debba servire la canzone, non sovrastarla.
+Ho avuto l'onore di suonare con l'Orchestra Afrosound Percussioni, l'Orchestra Sinfonica di Perugia, l'Orchestra della Rai e l'Orchestra del Cinema Italiano (OIC). Ho suonato in tutta Italia, in Europa e in tutto il mondo. Il palco è il mio posto preferito: ogni live è un'esperienza diversa, il rapporto con il pubblico, con gli altri musicisti, con l'acustica del posto. 
+Il palco è il mio posto preferito.
 
 ## Collaborazioni
 
-Nel corso degli anni ho lavorato con nomi del panorama indipendente italiano e internazionale. Alcune collaborazioni sono diventate amicizie, e le amicizie spesso sono diventate nuova musica.
+Nel corso degli anni ho lavorato con nomi del panorama indipendente italiano e internazionale, in contesti diversi tra loro — dall'orchestra alle discoteche. Alcune collaborazioni sono diventate amicizie, e le amicizie spesso sono diventate nuova musica.
 
 ---EN---
 
-## The story
+## The Story
 
-I'm Andrea Ciosti Cetica, drummer and percussionist with over ten years of experience on stage and in the studio. I started playing drums as a kid, fascinated by rhythm as a universal language capable of crossing cultures and genres.
+I'm Andrea Ciosti Cetica, drummer and percussionist. I started as a child, with my dad's guitar, fascinated by rhythm as a universal language capable of crossing cultures and genres.
 
-My training is hybrid: I studied jazz, progressive rock and African music, always trying to bring something personal to every project. I'm not interested in technique for its own sake: what I look for is groove, the physical sensation that a good rhythm section transmits to the body.
+I continued privately with Claudio Cuseri, a mentor in music and in life, then the path became more structured: UM - Università della Musica in Rome, the Morlacchi Conservatory in Perugia, Siena Jazz, up to a Master's at Collective in New York. A long and varied training, which I've always put to the service of jazz, rock, blues, pop, and electronic music. What matters to me is music and the emotion that helps you grow: emotion is the first thing that needs to be felt.
 
-## On stage
+## On Stage
 
-I've played all over Italy and Europe, in festivals, clubs and theatres. Every live show is a different experience: the relationship with the audience, with the other musicians, with the acoustics of the venue. The stage keeps me sharp.
-
-## In the studio
-
-In the studio I work as a session drummer and as a rhythm producer. I've collaborated with artists across various genres — from alternative pop to electronics, from indie to jazz fusion. I believe the drums should serve the song, not overwhelm it.
+I've had the honor of playing with the Afrosound Percussioni Orchestra, the Perugia Symphony Orchestra, the RAI Orchestra, and the Italian Film Orchestra (OIC). I've played all over Italy, Europe, and around the world. The stage is my favorite place: every live show is a different experience — the connection with the audience, with the other musicians, with the acoustics of the venue.
+The stage is my favorite place.
 
 ## Collaborations
 
-Over the years I've worked with names from the Italian and international independent scene. Some collaborations have become friendships, and friendships often become new music.
+Over the years I've worked with names from the Italian and international independent scene, across very different contexts — from orchestras to nightclubs. Some collaborations turned into friendships, and friendships often turned into new music.
