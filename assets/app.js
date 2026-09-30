@@ -556,16 +556,18 @@ async function renderGallery() {
   $('#app').innerHTML = `
     <div class="gallery-page page-enter">
       <div class="page-hero">
-        <div class="page-hero-inner">
+        <div class="p
+        
+        
+        age-hero-inner">
           <span class="section-label" data-it="GALLERY" data-en="GALLERY">GALLERY</span>
           <h1 class="page-hero-title" data-it="${titleIt}" data-en="${titleEn}">${title}</h1>
         </div>
       </div>
       <div class="gallery-page-inner">
-        <div class="gallery-page-grid">
           ${photos.map((p, i) => `
             <div class="gallery-page-item reveal" data-index="${i}" data-src="${p.src}">
-              ${p.src.startsWith('assets/') ? `<img src="${p.src}" alt="${p.alt || ''}" loading="lazy" />` : placeholderImg('gallery-' + i)}
+              ${p.src.startsWith('assets/') ? '<img src="' + p.src + '" alt="' + (p.alt || '') + '" loading="lazy" />' + (p.alt ? '<span class="gallery-caption">' + p.alt + '</span>' : '') : placeholderImg('gallery-' + i)}
             </div>
           `).join('')}
         </div>

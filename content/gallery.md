@@ -18,12 +18,10 @@ seo_desc_it: Foto e momenti dai live di Andrea Ciosti Cetica.
 seo_desc_en: Photos and moments from Andrea Ciosti Cetica's live shows.
 ---
 
-- assets/images/gallery-01.jpg | Live @ Festival 2024
-- assets/images/gallery-02.jpg | Studio Session
-- assets/images/gallery-03.jpg | Live @ Club Milano
-- assets/images/gallery-04.jpg | Backstage
-- assets/images/gallery-05.jpg | Rehearsal
-- assets/images/gallery-06.jpg | Live @ Roma
-- assets/images/gallery-07.jpg | Studio
-- assets/images/gallery-08.jpg | Live @ Firenze
-- assets/images/gallery-09.jpg | On the road
+
+- assets/images/arena_verona.jpg | Arena Verona
+- assets/images/io_urlo.jpg | Photo Book 
+- assets/images/io_marimba.jpg | Marimba
+- assets/images/io_agnelli.jpg | Con Luca Agnelli
+- assets/images/io_collective.jpg | Drum Collective
+- assets/images/rai_1.png | Rai 1
