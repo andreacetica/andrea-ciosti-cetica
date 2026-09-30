@@ -432,7 +432,7 @@ async function renderBio() {
         <h1 class="section-title reveal" data-it="${titleIt}" data-en="${titleEn}">${title}</h1>
         <div class="bio-page-grid">
           <div class="bio-page-img reveal">
-            ${placeholderImg('bio-portrait')}
+            ${meta.immagine ? `<img src="assets/images/${meta.immagine}" alt="${title}">` : placeholderImg('bio-portrait')}
           </div>
           <div class="bio-page-content reveal">
             ${marked.parse(text)}
