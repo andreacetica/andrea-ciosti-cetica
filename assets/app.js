@@ -706,10 +706,15 @@ async function renderLezioni() {
   const titleEn = meta.titolo_en || 'Lessons';
   const title = state.lang === 'it' ? titleIt : titleEn;
 
+  const L = (k) => state.lang === 'en' ? (meta[k + '_en'] || meta[k + '_it'] || '') : (meta[k + '_it'] || '');
   const libroTitolo = meta.libro_titolo || '';
-  const libroDesc = state.lang === 'it' ? (meta.libro_desc_it || '') : (meta.libro_desc_en || meta.libro_desc_it || '');
-  const libroImg = meta.libro_immagine || '';
+  const libroSottotitolo = L('libro_sottotitolo');
+  const libroDesc = L('libro_desc');
+  const libroDettagli = L('libro_dettagli').split('·').map(t => t.trim()).filter(Boolean);
+  const libroImgRaw = meta.libro_immagine || '';
+  const libroImg = /^https?:\/\//.test(libroImgRaw) ? libroImgRaw : (libroImgRaw ? `assets/images/${libroImgRaw}` : '');
   const libroLink = meta.libro_link || '#';
+  const libroVideo = meta.libro_video || '';
 
   updateSEO({ title, description: meta[`seo_desc_${state.lang}`], slug: 'lezioni' });
 
@@ -724,6 +729,32 @@ async function renderLezioni() {
 
       <div class="lezioni-inner">
 
+        ${libroTitolo ? `
+        <section class="libro-hero reveal">
+          <div class="libro-hero-grid">
+            <div class="libro-info">
+              <div class="libro-cover">
+                ${libroImg ? `<img src="${libroImg}" alt="${libroTitolo}" />` : placeholderImg('libro')}
+              </div>
+              <div class="libro-content">
+                <span class="section-label" data-it="IL MIO LIBRO" data-en="MY BOOK">${state.lang === 'it' ? 'IL MIO LIBRO' : 'MY BOOK'}</span>
+                <h2 class="libro-title">${libroTitolo}</h2>
+                ${libroSottotitolo ? `<p class="libro-subtitle">${libroSottotitolo}</p>` : ''}
+                ${libroDesc ? `<p class="libro-desc">${libroDesc}</p>` : ''}
+                ${libroDettagli.length ? `<ul class="libro-tags">${libroDettagli.map(t => `<li>${t}</li>`).join('')}</ul>` : ''}
+                <a href="${libroLink}" target="_blank" rel="noopener" class="btn-primary" data-it="ACQUISTA IL LIBRO" data-en="BUY THE BOOK">
+                  ${state.lang === 'it' ? 'ACQUISTA IL LIBRO' : 'BUY THE BOOK'}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+            ${libroVideo ? `
+            <div class="libro-video">
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${libroVideo}" title="${libroTitolo}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
+            </div>` : ''}
+          </div>
+        </section>` : ''}
+
         <section class="lezioni-section reveal">
           <span class="section-label" data-it="VIDEO LEZIONI" data-en="VIDEO LESSONS">${state.lang === 'it' ? 'VIDEO LEZIONI' : 'VIDEO LESSONS'}</span>
           <div class="lezioni-video-grid">
@@ -734,23 +765,6 @@ async function renderLezioni() {
           </div>
         </section>
 
-        ${libroTitolo ? `
-        <section class="libro-section reveal">
-          <div class="libro-grid">
-            <div class="libro-cover">
-              ${libroImg ? `<img src="assets/images/${libroImg}" alt="${libroTitolo}" />` : placeholderImg('libro')}
-            </div>
-            <div class="libro-content">
-              <span class="section-label" data-it="IL MIO LIBRO" data-en="MY BOOK">${state.lang === 'it' ? 'IL MIO LIBRO' : 'MY BOOK'}</span>
-              <h2 class="section-title">${libroTitolo}</h2>
-              <p>${libroDesc}</p>
-              <a href="${libroLink}" target="_blank" rel="noopener" class="btn-primary" data-it="SCOPRI IL LIBRO" data-en="DISCOVER THE BOOK">
-                ${state.lang === 'it' ? 'SCOPRI IL LIBRO' : 'DISCOVER THE BOOK'}
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-            </div>
-          </div>
-        </section>` : ''}
 
         <section class="lezioni-section reveal">
           <span class="section-label" data-it="CONSIGLI SCRITTI" data-en="WRITTEN TIPS">${state.lang === 'it' ? 'CONSIGLI SCRITTI' : 'WRITTEN TIPS'}</span>

@@ -798,16 +798,28 @@ section { padding: 6rem 2rem; }
   line-height: 1.7;
 }
 
-.libro-section {
-  background: var(--black2);
-  border: 1px solid var(--grey);
-  border-radius: var(--radius);
+.libro-hero {
+  position: relative;
+  margin-bottom: 5rem;
   padding: 3rem;
+  background:
+    radial-gradient(circle at 15% 20%, var(--accent-dim), transparent 55%),
+    var(--black2);
+  border: 1px solid var(--grey);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
-.libro-grid {
+.libro-hero-grid {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 3rem;
+  align-items: center;
+}
+.libro-info {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 2rem;
   align-items: center;
 }
 .libro-cover {
@@ -815,20 +827,65 @@ section { padding: 6rem 2rem; }
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--grey);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06);
+  transform: perspective(900px) rotateY(8deg);
+  transition: transform var(--transition);
 }
-.libro-cover img { width: 100%; height: 100%; object-fit: cover; }
-.libro-content p {
+.libro-cover:hover { transform: perspective(900px) rotateY(0deg) scale(1.03); }
+.libro-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.libro-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  margin: 0.6rem 0 0.4rem;
+}
+.libro-subtitle {
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.libro-desc {
   color: var(--white2);
-  margin: 1.25rem 0 1.75rem;
-  font-size: 0.975rem;
-  line-height: 1.8;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+.libro-tags {
+  list-style: none;
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin: 0 0 1.75rem; padding: 0;
+}
+.libro-tags li {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white2);
+  border: 1px solid var(--grey);
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius);
+}
+.libro-video {
+  aspect-ratio: 16/9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--grey);
+  border: 1px solid var(--grey);
 }
 
 @media (max-width: 900px) {
   .lezioni-video-grid { grid-template-columns: 1fr; }
-  .libro-section { padding: 2rem; }
-  .libro-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .libro-cover { max-width: 240px; margin: 0 auto; }
+  .libro-hero { padding: 2rem 1.5rem; }
+  .libro-hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+@media (max-width: 600px) {
+  .libro-info { grid-template-columns: 1fr; }
+  .libro-cover { max-width: 220px; margin: 0 auto; transform: none; }
+  .libro-content { text-align: center; }
+  .libro-tags { justify-content: center; }
 }
 
 /* ── BLOG PAGE ───────────────────────────────────────────────── */

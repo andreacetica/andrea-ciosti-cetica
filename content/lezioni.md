@@ -8,15 +8,22 @@ titolo_en: Lessons
 seo_desc_it: Video lezioni, consigli pratici e il mio libro per imparare la batteria.
 seo_desc_en: Video lessons, practical tips and my book to learn drums.
 #
-# — IL MIO LIBRO —
+# — IL MIO LIBRO — (sezione in evidenza in cima alla pagina)
 # Lascia libro_titolo vuoto se non vuoi mostrare questa sezione.
 libro_titolo: Suona la Batteria
-libro_desc_it: Il mio metodo di batteria, pubblicato nel 2021 da Eufonia e tradotto in inglese nel 2023.
-libro_desc_en: My drum method, published in 2021 by Eufonia and translated into English in 2023.
-# Nome del file di copertina, da caricare in assets/images/ (come per le altre foto)
-libro_immagine: libro-cover.jpg
-# Link dove si può acquistare il libro (Amazon, sito editore, ecc.)
-libro_link: https://www.amazon.it/
+libro_sottotitolo_it: Metodo dedicato ai bambini
+libro_sottotitolo_en: A drum method for children
+libro_desc_it: Il mio metodo per far scoprire la batteria ai più piccoli, passo dopo passo. Esercizi e brani progressivi, con QR code per ascoltare le demo audio di ogni esercizio. Pubblicato da Edizioni Eufonia nel 2021 e tradotto in inglese nel 2023.
+libro_desc_en: My method to help kids discover the drums, step by step. Progressive exercises and pieces, with QR codes to listen to audio demos of every exercise. Published by Edizioni Eufonia in 2021 and translated into English in 2023.
+# Piccole etichette sotto la descrizione, separate da ·
+libro_dettagli_it: Edizioni Eufonia · 84 pagine · Audio con QR code
+libro_dettagli_en: Edizioni Eufonia · 84 pages · Audio via QR code
+# Copertina: nome di un file in assets/images/ (es. libro-cover.jpg) oppure un link completo
+libro_immagine: libro_cover.png
+# Link dove si può acquistare il libro
+libro_link: https://www.edizionieufonia.it/prodotto/suona-la-batteria/
+# ID del video promozionale su YouTube (la parte dopo v= nel link)
+libro_video: xsLmuSLsS-k
 ---
 
 # — VIDEO LEZIONI —
