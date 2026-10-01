@@ -13,6 +13,8 @@
 # Il file .md resta in articoli/ per l'archivio.
 # ═══════════════════════════════════════════════════════
 
-- groove-therapy-studio
-- live-festival-2024
-- nuovo-progetto-2025
+# - groove-therapy-studio   (articolo di esempio del modello, nascosto)
+# - live-festival-2024   (articolo di esempio del modello, nascosto)
+# - nuovo-progetto-2025   (articolo di esempio del modello, nascosto)
+- il-paradiddle
+- gene-krupa-sing-sing-sing

@@ -194,7 +194,7 @@ async function navigate(path, push = true) {
 
 function updateActiveNav(path) {
   $$('.nav-links a, .mobile-menu a').forEach(a => {
-    a.classList.toggle('active', a.dataset.link === path || (path.startsWith('/blog/') && a.dataset.link === '/lezioni'));
+    a.classList.toggle('active', a.dataset.link === path || (path.startsWith('/blog/') && a.dataset.link === '/blog'));
   });
 }
 
@@ -339,17 +339,17 @@ async function renderHome() {
       </div>
     </section>
 
-    <!-- DIDATTICA preview -->
+    <!-- NEWS preview -->
     ${newsArticles.length ? `
     <section class="news-section">
       <div class="section-inner">
-        <span class="section-label reveal" data-it="DALLA DIDATTICA" data-en="FROM THE LESSONS">${state.lang === 'it' ? 'DALLA DIDATTICA' : 'FROM THE LESSONS'}</span>
+        <span class="section-label reveal" data-it="ULTIME NEWS" data-en="LATEST NEWS">${state.lang === 'it' ? 'ULTIME NEWS' : 'LATEST NEWS'}</span>
         <div class="news-grid">
           ${newsArticles.slice(0, 3).map(a => newsCardHTML(a)).join('')}
         </div>
         <br><br>
-        <a href="/lezioni" data-link="/lezioni" class="btn-text reveal" data-it="VAI ALLA DIDATTICA" data-en="GO TO LESSONS">
-          ${state.lang === 'it' ? 'VAI ALLA DIDATTICA' : 'GO TO LESSONS'}
+        <a href="/blog" data-link="/blog" class="btn-text reveal" data-it="TUTTE LE NEWS" data-en="ALL NEWS">
+          ${state.lang === 'it' ? 'TUTTE LE NEWS' : 'ALL NEWS'}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -709,27 +709,48 @@ function initLightbox() {
 /* ── BLOG LIST ───────────────────────────────────────────────── */
 async function renderBlog() {
   const raw = await fetchText('content/blog.md').catch(() => '');
-  const { meta } = parseFrontmatter(raw);
   const articles = await loadBlogIndex(raw);
+  const it = state.lang === 'it';
 
-  updateSEO({ title: state.lang === 'it' ? 'News & Blog' : 'News & Blog', slug: 'blog' });
+  updateSEO({
+    title: 'News',
+    slug: 'blog',
+    description: it
+      ? 'Lezioni, nozioni e storie di batteristi e percussionisti, a cura di Andrea Ciosti Cetica.'
+      : 'Lessons, know-how and stories of drummers and percussionists, by Andrea Ciosti Cetica.',
+  });
+
+  const cats = ['lezione', 'nozione', 'storia'].filter(c => articles.some(a => a.categoria === c));
 
   $('#app').innerHTML = `
     <div class="page-enter">
       <div class="page-hero">
         <div class="page-hero-inner">
-          <span class="section-label" data-it="NEWS & BLOG" data-en="NEWS & BLOG">NEWS & BLOG</span>
-          <h1 class="page-hero-title" data-it="TUTTI GLI ARTICOLI" data-en="ALL ARTICLES">${state.lang === 'it' ? 'TUTTI GLI ARTICOLI' : 'ALL ARTICLES'}</h1>
+          <span class="section-label" data-it="NEWS" data-en="NEWS">NEWS</span>
+          <h1 class="page-hero-title" data-it="LEZIONI, NOZIONI E STORIE" data-en="LESSONS, KNOW-HOW AND STORIES">${it ? 'LEZIONI, NOZIONI E STORIE' : 'LESSONS, KNOW-HOW AND STORIES'}</h1>
+          <p class="page-hero-sub" data-it="Ogni settimana un nuovo articolo sul mondo della batteria e delle percussioni." data-en="A new article every week about the world of drums and percussion.">${it ? 'Ogni settimana un nuovo articolo sul mondo della batteria e delle percussioni.' : 'A new article every week about the world of drums and percussion.'}</p>
         </div>
       </div>
+      ${cats.length > 1 ? `
+      <div class="blog-filters">
+        <button class="blog-filter active" data-cat="">${it ? 'Tutti' : 'All'}</button>
+        ${cats.map(c => `<button class="blog-filter" data-cat="${c}">${categoriaLabel(c)}</button>`).join('')}
+      </div>` : ''}
       <div class="blog-list">
         ${articles.length
           ? articles.map(a => newsCardHTML(a)).join('')
-          : `<p style="color:var(--grey3);grid-column:1/-1" data-it="Nessun articolo pubblicato." data-en="No articles published yet.">${state.lang === 'it' ? 'Nessun articolo pubblicato.' : 'No articles published yet.'}</p>`
+          : `<p style="color:var(--grey3);grid-column:1/-1">${it ? 'Il primo articolo arriva presto.' : 'The first article is coming soon.'}</p>`
         }
       </div>
     </div>
   `;
+  $$('.blog-filter').forEach(btn => btn.addEventListener('click', () => {
+    $$('.blog-filter').forEach(b => b.classList.toggle('active', b === btn));
+    const c = btn.dataset.cat;
+    $$('.blog-list .news-card').forEach(card => {
+      card.style.display = (!c || card.dataset.cat === c) ? '' : 'none';
+    });
+  }));
   pageEnter();
 }
 
@@ -743,12 +764,16 @@ async function renderArticle(slug) {
     return;
   }
   const { meta, body } = parseFrontmatter(raw);
+  if (isBozza(meta) && !IS_LOCAL) { render404(); return; }
   const tit  = meta[`titolo_${state.lang}`]  || meta.titolo_it || slug;
   const desc  = meta[`seo_desc_${state.lang}`] || meta[`descrizione_${state.lang}`] || '';
   const data  = meta.data ? formatDate(meta.data) : '';
-  const tag   = meta.tag || '';
+  const tag   = meta.tag || categoriaLabel(meta.categoria);
   const img   = meta.immagine || '';
   const text  = extractLang(body, state.lang);
+  const bozzaBanner = isBozza(meta)
+    ? `<div class="bozza-banner">BOZZA — visibile solo in locale. Per pubblicarla cambia <code>stato: bozza</code> in <code>stato: pubblicato</code> nel file <code>content/articoli/${slug}.md</code> e fai git push.</div>`
+    : '';
 
   updateSEO({ title: tit, description: desc, slug: `blog/${slug}`, image: img });
 
@@ -760,6 +785,7 @@ async function renderArticle(slug) {
             ${state.lang === 'it' ? '← TUTTI GLI ARTICOLI' : '← ALL ARTICLES'}
           </a>
         </div>
+        ${bozzaBanner}
         <div class="article-header">
           <div class="article-meta">
             ${data ? `<span class="article-date">${data}</span>` : ''}
@@ -783,7 +809,10 @@ async function renderLezioni() {
   ]);
   const { meta, body } = parseFrontmatter(raw);
   const videos = parseLezioniVideos(body);
-  const tips = await loadBlogIndex(blogRaw);
+  const allTips = await loadBlogIndex(blogRaw);
+  const tips = allTips.some(a => a.categoria)
+    ? allTips.filter(a => a.categoria === 'lezione' || a.categoria === 'nozione')
+    : allTips;
 
   const titleIt = meta.titolo_it || 'Didattica';
   const titleEn = meta.titolo_en || 'Lessons';
@@ -1003,6 +1032,21 @@ function render404() {
   `;
 }
 
+
+/* ── NEWS: bozze e categorie ─────────────────────────────────── */
+// Le bozze (stato: bozza) si vedono SOLO in locale (Live Server), mai sul sito online.
+const IS_LOCAL = ['localhost', '127.0.0.1', ''].includes(location.hostname);
+const CATEGORIE = {
+  lezione: { it: 'Lezione', en: 'Lesson' },
+  nozione: { it: 'Nozione', en: 'Know-how' },
+  storia:  { it: 'Storia',  en: 'Story' },
+};
+function categoriaLabel(c) {
+  const k = (c || '').toLowerCase();
+  return CATEGORIE[k] ? CATEGORIE[k][state.lang === 'en' ? 'en' : 'it'] : '';
+}
+function isBozza(meta) { return (meta.stato || '').toLowerCase() === 'bozza'; }
+
 /* ── NEWS / BLOG HELPERS ─────────────────────────────────────── */
 async function loadNewsIndex(raw) {
   const lines = raw.split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#') && !l.startsWith('---'));
@@ -1022,13 +1066,18 @@ async function loadArticlesBySlug(slugs) {
     try {
       const raw = await fetchText(`content/articoli/${slug}.md`);
       const { meta, body } = parseFrontmatter(raw);
-      const excerpt = extractLang(body, state.lang).replace(/#{1,6}\s/g, '').slice(0, 200);
+      if (isBozza(meta) && !IS_LOCAL) return; // bozza: non pubblicata online
+      const excerpt = extractLang(body, state.lang)
+        .replace(/#{1,6}\s/g, '').replace(/[*_>`]/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .slice(0, 200);
       articles.push({
         slug,
-        titolo:   meta[`titolo_${state.lang}`]  || meta.titolo_it || slug,
-        data:     meta.data || '',
-        tag:      meta.tag || '',
-        immagine: meta.immagine || '',
+        titolo:    meta[`titolo_${state.lang}`]  || meta.titolo_it || slug,
+        data:      meta.data || '',
+        tag:       meta.tag || categoriaLabel(meta.categoria),
+        categoria: (meta.categoria || '').toLowerCase(),
+        immagine:  meta.immagine || '',
+        bozza:     isBozza(meta),
         excerpt,
       });
     } catch { /* articolo non trovato, skip */ }
@@ -1040,9 +1089,12 @@ async function loadArticlesBySlug(slugs) {
 
 function newsCardHTML(a) {
   return `
-    <div class="news-card reveal" onclick="navigate('/blog/${a.slug}')" style="cursor:pointer">
+    <div class="news-card reveal" data-cat="${a.categoria || ''}" onclick="navigate('/blog/${a.slug}')" style="cursor:pointer">
       <div class="news-card-img">
-        ${a.immagine ? `<img src="assets/images/${a.immagine}" alt="${a.titolo}" loading="lazy" />` : placeholderImg('news')}
+        ${a.immagine
+          ? `<img src="assets/images/${a.immagine}" alt="${a.titolo}" loading="lazy" />`
+          : `<div class="news-card-cover cat-${a.categoria || 'news'}"><span>${categoriaLabel(a.categoria) || 'News'}</span></div>`}
+        ${a.bozza ? '<span class="bozza-badge">BOZZA</span>' : ''}
       </div>
       <div class="news-card-body">
         <div class="news-card-meta">
