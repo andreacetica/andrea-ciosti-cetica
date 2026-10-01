@@ -35,7 +35,7 @@ seo_desc_en: Listen to Andrea Ciosti Cetica's music — tracks, productions and 
 # - The Pocket | 4:33 | Session
 # - Resonance | 5:47 | Original
 
-- video: Yur_jpESVxo | Shyntetic Opera | Acoustic/electro sound | Acoustic/electro sound
+- video: Yur_jpESVxo | Synthetic Opera | Acoustic/electro sound | Acoustic/electro sound
 - video: -v8BIZLvWDQ | Dies Irae | Electro mash-up | Electro mash-up
 - video: fGH4K_drFTc | Hit Me — Dirty Loops | Drum cover | Drum cover
 - video: hUc3HuvMb-Y | The Drop Sound | Originale | Original | Condiviso da Pearl Europe | Shared by Pearl Europe | https://www.instagram.com/p/BuG57QdgN2C/

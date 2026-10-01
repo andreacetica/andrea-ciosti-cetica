@@ -174,7 +174,7 @@ async function navigate(path, push = true) {
   scrollTo({ top: 0, behavior: 'instant' });
 
   const app = $('#app');
-  app.innerHTML = '<div style="min-height:60vh;display:flex;align-items:center;justify-content:center;"><svg class="loader-logo" style="width:48px;height:48px;animation:loaderPulse 1.2s infinite" viewBox="0 0 60 60" fill="none"><polygon points="30,4 56,52 4,52" stroke="#e8005a" stroke-width="2.5" fill="none"/><circle cx="30" cy="38" r="7" fill="#e8005a"/></svg></div>';
+  app.innerHTML = '<div style="min-height:60vh;display:flex;align-items:center;justify-content:center;"><img class="loader-logo" src="assets/images/logo-ac.svg" alt="" /></div>';
 
   // Articoli /blog/:slug
   if (path.startsWith('/blog/')) {
@@ -249,10 +249,7 @@ async function renderHome() {
       <div class="hero-bg-img"></div>
       <div class="hero-bg-overlay"></div>
       <div class="hero-logo-bg">
-        <svg viewBox="0 0 200 200" fill="none">
-          <polygon points="100,10 190,175 10,175" stroke="#e8005a" stroke-width="1" fill="none" opacity="0.5"/>
-          <circle cx="100" cy="140" r="30" fill="#e8005a" opacity="0.3"/>
-        </svg>
+        <img src="assets/images/logo-ac.svg" alt="" />
       </div>
       <div class="hero-content">
         <p class="hero-eyebrow" data-it="// BATTERISTA · PERCUSSIONISTA" data-en="// DRUMMER · PERCUSSIONIST">// BATTERISTA · PERCUSSIONISTA</p>
@@ -283,7 +280,7 @@ async function renderHome() {
       <div class="section-inner bio-grid">
         <div class="bio-image reveal">
           <div class="bio-image-line"></div>
-          <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/Yur_jpESVxo" title="Shyntetic Opera — Andrea Ciosti Cetica" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
+          <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/Yur_jpESVxo" title="Synthetic Opera — Andrea Ciosti Cetica" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
         </div>
         <div class="bio-text reveal">
           <span class="section-label">BIO</span>
@@ -308,10 +305,7 @@ async function renderHome() {
             <div class="music-disc" id="music-disc">
               <div class="disc-ring-1"></div>
               <div class="disc-inner">
-                <svg class="disc-logo" viewBox="0 0 60 60" fill="none">
-                  <polygon points="30,4 56,52 4,52" stroke="#e8005a" stroke-width="2.5" fill="none"/>
-                  <circle cx="30" cy="38" r="7" fill="#e8005a"/>
-                </svg>
+                <img class="disc-logo" src="assets/images/logo-ac.svg" alt="" />
               </div>
             </div>
             <button class="music-play-btn" id="disc-play-btn" aria-label="Play">
@@ -519,10 +513,7 @@ async function renderMusica() {
             <div class="music-disc playing" id="music-disc">
               <div class="disc-ring-1"></div>
               <div class="disc-inner">
-                <svg class="disc-logo" viewBox="0 0 60 60" fill="none">
-                  <polygon points="30,4 56,52 4,52" stroke="#e8005a" stroke-width="2.5" fill="none"/>
-                  <circle cx="30" cy="38" r="7" fill="#e8005a"/>
-                </svg>
+                <img class="disc-logo" src="assets/images/logo-ac.svg" alt="" />
               </div>
             </div>
           </div>

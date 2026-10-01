@@ -1612,3 +1612,16 @@ a.musica-video-badge:hover { transform: scale(1.05); }
 
 /* spazio tra il testo di Chi sono e "Leggi di più" */
 .bio-text .bio-short { margin-bottom: 2rem; }
+
+
+/* ── LOGO UFFICIALE ─────────────────────────────────────────── */
+.logo-svg { width: 48px; height: 48px; }
+.logo-wordmark { height: 30px; width: auto; display: block; }
+.footer-logo-svg { width: 64px; height: 64px; }
+.footer-wordmark { width: 170px; height: auto; display: block; opacity: 0.85; }
+.hero-logo-bg img { width: 100%; height: auto; display: block; }
+.hero-logo-bg { opacity: 0.08; }
+.disc-logo { width: 40px; height: 40px; }
+@media (max-width: 600px) {
+  .logo-wordmark { height: 24px; }
+}
