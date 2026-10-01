@@ -422,6 +422,37 @@ section { padding: 6rem 2rem; }
 .play-circle svg { width: 14px; height: 14px; fill: currentColor; margin-left: 2px; }
 .play-label { font-size: 0.65rem; font-family: var(--font-mono); letter-spacing: 0.15em; }
 
+/* Pulsante Spotify (home) */
+.btn-spotify .play-label { display: flex; flex-direction: column; gap: 0.35rem; text-align: left; }
+.btn-spotify .play-label-main { color: var(--white); font-size: 0.7rem; }
+.btn-spotify .play-label-sub {
+  color: #1DB954;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.spotify-circle {
+  position: relative;
+  width: 52px; height: 52px;
+  border: none;
+  background: #1DB954;
+}
+.spotify-circle svg { width: 26px; height: 26px; fill: #0a0a0a; margin-left: 0; }
+.spotify-circle::after {
+  content: '';
+  position: absolute; inset: -6px;
+  border-radius: 50%;
+  border: 1px solid #1DB954;
+  opacity: 0;
+  animation: spotifyPulse 2.4s ease-out infinite;
+}
+.btn-spotify:hover .spotify-circle { background: #1ed760; border-color: transparent; transform: scale(1.06); }
+.btn-spotify .spotify-circle { transition: transform var(--transition), background var(--transition); }
+@keyframes spotifyPulse {
+  0%   { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
 /* ── ANIMATIONS ──────────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }

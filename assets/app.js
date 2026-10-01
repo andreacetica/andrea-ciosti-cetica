@@ -249,11 +249,14 @@ async function renderHome() {
             SCOPRI DI PIÙ
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="${s.spotify || '#'}" target="_blank" rel="noopener" class="btn-play">
-            <div class="play-circle">
-              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          <a href="${s.spotify || '#'}" target="_blank" rel="noopener" class="btn-play btn-spotify" aria-label="Spotify">
+            <div class="play-circle spotify-circle">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34c-.24.36-.66.48-1.02.24-2.82-1.74-6.36-2.1-10.56-1.14-.42.12-.78-.18-.9-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.3 1.02zm1.44-3.3c-.3.42-.84.6-1.26.3-3.24-1.98-8.16-2.58-11.94-1.38-.48.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14C9.6 9.9 15 10.56 18.72 12.84c.36.18.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.3c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.72 1.62.54.3.72 1.02.42 1.56-.3.42-1.02.6-1.56.3z"/></svg>
             </div>
-            <div class="play-label" data-it="ASCOLTA<br>IL MIO SOUND" data-en="LISTEN TO<br>MY SOUND">ASCOLTA<br>IL MIO SOUND</div>
+            <div class="play-label">
+              <span class="play-label-main" data-it="ASCOLTA IL MIO BRANO" data-en="LISTEN TO MY TRACK">${state.lang === 'it' ? 'ASCOLTA IL MIO BRANO' : 'LISTEN TO MY TRACK'}</span>
+              <span class="play-label-sub" data-it="su Spotify" data-en="on Spotify">${state.lang === 'it' ? 'su Spotify' : 'on Spotify'}</span>
+            </div>
           </a>
         </div>
       </div>

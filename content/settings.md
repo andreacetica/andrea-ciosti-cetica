@@ -25,7 +25,7 @@ youtube: https://youtube.com/@andreaciosticetica
 spotify: https://open.spotify.com/artist/5GjTujdCOrZnZWFh38smdR
 
 # ── FOOTER ───────────────────────────────────────────────
-anno: 2024
+anno:
 
 # ── SERVIZI (testi delle card in homepage) ───────────────
 servizio_live_it: Performance ed energia dal vivo.
