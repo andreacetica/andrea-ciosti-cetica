@@ -381,10 +381,10 @@ function renderDoors(articles, videos, s) {
             <span class="door-cta">${lesson ? t('Leggi la lezione', 'Read the lesson') : t('Vai alla didattica', 'Go to lessons')} ${arrow}</span>
           </a>
 
-          <a class="door reveal" href="mailto:${email}?subject=${subject}">
+          <a class="door reveal" href="/contatti" data-link="/contatti">
             <span class="door-num">02</span>
             <h3 class="door-q">${t('Cerchi un batterista?', 'Looking for a drummer?')}</h3>
-            <p class="door-text">${t('Live, studio, orchestre e collaborazioni. Raccontami il tuo progetto.', 'Live shows, studio, orchestras and collaborations. Tell me about your project.')}</p>
+            <p class="door-text">${t('Live, studio, orchestre e collaborazioni. Vuoi collaborare? Fammi una proposta!', 'Live shows, studio, orchestras and collaborations. Want to work together? Send me a proposal!')}</p>
             <span class="door-cta">${t('Scrivimi', 'Write to me')} ${arrow}</span>
           </a>
 
@@ -1006,7 +1006,13 @@ async function renderContatti() {
   const tel   = s.telefono || '+39 000 0000000';
   const citta = s.citta || 'Milano, Italia';
 
-  updateSEO({ title: state.lang === 'it' ? 'Contatti' : 'Contact', slug: 'contatti' });
+  const it = state.lang === 'it';
+  const waNumber = tel.replace(/[^0-9]/g, '');
+  const waText = encodeURIComponent(it ? 'Ciao Andrea, ti scrivo dal tuo sito: ' : 'Hi Andrea, I\'m writing from your website: ');
+  const waLink = `https://wa.me/${waNumber}?text=${waText}`;
+  const mailSubject = encodeURIComponent(it ? 'Proposta di collaborazione' : 'Collaboration proposal');
+
+  updateSEO({ title: it ? 'Contatti' : 'Contact', slug: 'contatti' });
 
   $('#app').innerHTML = `
     <div class="contatti-page page-enter">
@@ -1015,12 +1021,23 @@ async function renderContatti() {
         <h1 class="section-title reveal" data-it="SCRIVIMI" data-en="GET IN TOUCH" style="text-align:center">${state.lang === 'it' ? 'SCRIVIMI' : 'GET IN TOUCH'}</h1>
         <div class="contatti-grid contatti-grid-single">
           <div class="contatti-info reveal" style="text-align:center;max-width:520px;margin:0 auto">
-            <p data-it="Hai un progetto, una collaborazione o vuoi semplicemente salutare? Scrivimi, rispondo a tutti."
-               data-en="Have a project, collaboration or just want to say hi? Write me, I reply to everyone.">
-              ${state.lang === 'it'
-                ? 'Hai un progetto, una collaborazione o vuoi semplicemente salutare? Scrivimi, rispondo a tutti.'
-                : 'Have a project, collaboration or just want to say hi? Write me, I reply to everyone.'}
+            <p data-it="Vuoi collaborare? Fammi una proposta! Live, studio, orchestre o lezioni: rispondo a tutti."
+               data-en="Want to work together? Send me a proposal! Live shows, studio, orchestras or lessons: I reply to everyone.">
+              ${it
+                ? 'Vuoi collaborare? Fammi una proposta! Live, studio, orchestre o lezioni: rispondo a tutti.'
+                : 'Want to work together? Send me a proposal! Live shows, studio, orchestras or lessons: I reply to everyone.'}
             </p>
+            <div class="contact-actions">
+              <a class="contact-btn contact-btn-wa" href="${waLink}" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.3-.4v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.3-.5-.4z"/></svg>
+                <span>${state.lang === 'it' ? 'Scrivimi su WhatsApp' : 'Message me on WhatsApp'}</span>
+              </a>
+              <a class="contact-btn" href="mailto:${email}?subject=${mailSubject}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>${state.lang === 'it' ? 'Inviami un\'email' : 'Send me an email'}</span>
+              </a>
+              <button type="button" class="contact-copy" id="copy-email">${state.lang === 'it' ? 'Copia indirizzo email' : 'Copy email address'}</button>
+            </div>
             <div class="contact-item" style="justify-content:center">
               <div class="contact-item-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>

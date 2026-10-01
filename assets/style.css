@@ -1574,3 +1574,28 @@ a.musica-video-badge:hover { transform: scale(1.05); }
 @media (max-width: 900px) {
   .doors-grid { grid-template-columns: 1fr; }
 }
+
+
+/* ── CONTATTI: pulsanti ──────────────────────────────────────── */
+.contact-actions { display: flex; flex-direction: column; align-items: center; gap: 0.9rem; margin: 2rem 0 2.5rem; }
+.contact-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.7rem;
+  width: 100%; max-width: 360px;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--accent); border-radius: var(--radius);
+  font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--white); text-decoration: none;
+  transition: background var(--transition), transform var(--transition);
+}
+.contact-btn:hover { background: var(--accent-dim); transform: translateY(-2px); }
+.contact-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+.contact-btn-wa { background: #25d366; border-color: #25d366; color: #0a0a0a; }
+.contact-btn-wa:hover { background: #3ee07a; }
+.contact-btn-wa svg { fill: #0a0a0a; }
+.contact-copy {
+  background: none; border: none; cursor: pointer;
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--grey3); text-decoration: underline; text-underline-offset: 4px;
+  padding: 0.5rem;
+}
+.contact-copy:hover { color: var(--white); }
