@@ -5,7 +5,7 @@
 # ═══════════════════════════════════════════════════════
 
 # ── DOMINIO ─────────────────────────────────────────────
-dominio: https://tuodominio.com
+dominio: https://andreaciosticetica.com
 
 # ── SEO GLOBALE ──────────────────────────────────────────
 seo_titolo_it: Andrea Ciosti Cetica — Drummer
@@ -25,15 +25,15 @@ youtube: https://youtube.com/@andreaciosticetica
 spotify: https://open.spotify.com/artist/5GjTujdCOrZnZWFh38smdR
 
 # ── FOOTER ───────────────────────────────────────────────
-anno:
+anno: 2026
 
 # ── SERVIZI (testi delle card in homepage) ───────────────
-servizio_live_it: Performance ed energia dal vivo.
-servizio_live_en: Performance and live energy.
+servizio_live_it: Concerti, orchestre e progetti dal vivo.
+servizio_live_en: Concerts, orchestras and live projects.
 servizio_studio_it: Registrazioni, produzioni e collaborazioni.
 servizio_studio_en: Recordings, productions and collaborations.
-servizio_collab_it: Progetti e artisti con cui suono.
-servizio_collab_en: Projects and artists I play with.
-servizio_musica_it: Ascolta i miei brani e le mie produzioni.
-servizio_musica_en: Listen to my tracks and productions.
+servizio_didattica_it: Lezioni, video ed esercizi per batteristi di ogni livello.
+servizio_didattica_en: Lessons, videos and exercises for drummers of every level.
+servizio_libro_it: “Suona la Batteria”: il mio metodo, in italiano e in inglese.
+servizio_libro_en: “Suona la Batteria”: my method, in Italian and English.
 ---

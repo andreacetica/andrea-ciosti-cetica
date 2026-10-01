@@ -61,7 +61,12 @@ function extractLang(text, lang) {
 function applyLang(lang, root = document) {
   $$('[data-it]', root).forEach(el => {
     const key = lang === 'en' ? 'en' : 'it';
-    el.textContent = el.dataset[key] || el.textContent;
+    const val = el.dataset[key];
+    if (!val) return;
+    if (el.children.length === 0) { el.textContent = val; return; }
+    // L'elemento contiene icone (es. la freccia nei pulsanti): cambia solo il testo
+    const tn = [...el.childNodes].find(n => n.nodeType === 3 && n.textContent.trim());
+    if (tn) tn.textContent = ' ' + val + ' ';
   });
   $$('[data-it-placeholder]', root).forEach(el => {
     const key = lang === 'en' ? 'enPlaceholder' : 'itPlaceholder';
@@ -110,7 +115,7 @@ function applySettings(s) {
 /* ── SEO MANAGER ─────────────────────────────────────────────── */
 function updateSEO({ title, description, slug, image } = {}) {
   const s = state.settings || {};
-  const base = s.dominio || 'https://tuodominio.com';
+  const base = s.dominio || 'https://andreaciosticetica.com';
   const defaultImg = `${base}/assets/images/og-cover.jpg`;
 
   const fullTitle = title
@@ -208,12 +213,23 @@ document.addEventListener('click', e => {
 
 window.addEventListener('popstate', () => navigate(getPath(), false));
 
+
+/* ── SPOTIFY ─────────────────────────────────────────────────── */
+// Player ufficiale di Spotify del profilo artista (da settings.md → spotify)
+function spotifyEmbedHTML(height = 352) {
+  const url = (state.settings && state.settings.spotify) || '';
+  const m = url.match(/artist\/([A-Za-z0-9]+)/);
+  if (!m) return '';
+  return `<iframe class="spotify-embed" src="https://open.spotify.com/embed/artist/${m[1]}?utm_source=generator&theme=0" width="100%" height="${height}" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify — Andrea Ciosti Cetica"></iframe>`;
+}
+
 /* ── HOME ────────────────────────────────────────────────────── */
 async function renderHome() {
-  const [homeMd, newsMd, s] = await Promise.all([
+  const [homeMd, newsMd, s, musicaMd] = await Promise.all([
     fetchText('content/home.md').catch(() => ''),
     fetchText('content/news.md').catch(() => ''),
     loadSettings(),
+    fetchText('content/musica.md').catch(() => ''),
   ]);
 
   const { meta: hMeta, body: hBody } = parseFrontmatter(homeMd);
@@ -267,26 +283,12 @@ async function renderHome() {
       <div class="section-inner bio-grid">
         <div class="bio-image reveal">
           <div class="bio-image-line"></div>
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/FeCcAQFvMUE" title="Andrea Ciosti Cetica" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
+          <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/FeCcAQFvMUE" title="Andrea Ciosti Cetica" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
         </div>
         <div class="bio-text reveal">
           <span class="section-label">BIO</span>
           <h2 class="section-title" data-it="CHI SONO" data-en="ABOUT ME">${state.lang === 'it' ? 'CHI SONO' : 'ABOUT ME'}</h2>
           <div class="bio-short">${marked.parse(extractLang(hBody, state.lang).slice(0, 600))}</div>
-          <div class="bio-stats">
-            <div class="stat-item">
-              <span class="stat-number">${hMeta.anni_esperienza || '10'}+</span>
-              <span class="stat-label" data-it="Anni Esperienza" data-en="Years Exp.">${state.lang === 'it' ? 'Anni Esperienza' : 'Years Exp.'}</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">${hMeta.concerti || '200'}+</span>
-              <span class="stat-label" data-it="Live Show" data-en="Live Shows">${state.lang === 'it' ? 'Live Show' : 'Live Shows'}</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">${hMeta.album || '12'}</span>
-              <span class="stat-label" data-it="Album" data-en="Albums">Album</span>
-            </div>
-          </div>
           <a href="/bio" data-link="/bio" class="btn-text" data-it="LEGGI DI PIÙ" data-en="READ MORE">
             ${state.lang === 'it' ? 'LEGGI DI PIÙ' : 'READ MORE'}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -295,15 +297,8 @@ async function renderHome() {
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="services-section">
-      <div class="section-inner">
-        <span class="section-label reveal" data-it="COSA FACCIO" data-en="WHAT I DO">${state.lang === 'it' ? 'COSA FACCIO' : 'WHAT I DO'}</span>
-        <div class="services-grid reveal">
-          ${renderServiceCards(s)}
-        </div>
-      </div>
-    </section>
+    <!-- DA DOVE VUOI INIZIARE: tre porte -->
+    ${renderDoors(newsArticles, parseMusicaVideos(musicaMd), s)}
 
     <!-- MUSIC preview -->
     <section class="music-section">
@@ -326,9 +321,7 @@ async function renderHome() {
           <div class="reveal">
             <span class="section-label" data-it="MUSICA" data-en="MUSIC">${state.lang === 'it' ? 'MUSICA' : 'MUSIC'}</span>
             <h2 class="section-title" data-it="ASCOLTA" data-en="LISTEN">${state.lang === 'it' ? 'ASCOLTA' : 'LISTEN'}</h2>
-            <div id="track-list-home" class="track-list">
-              <div style="color:var(--grey3);font-size:.85rem;padding:1rem 0" data-it="Caricamento tracce..." data-en="Loading tracks...">Caricamento tracce...</div>
-            </div>
+            <div class="spotify-wrap">${spotifyEmbedHTML(232)}</div>
             <br>
             <a href="/musica" data-link="/musica" class="btn-text" data-it="VAI A TUTTA LA MUSICA" data-en="ALL MUSIC">
               ${state.lang === 'it' ? 'VAI A TUTTA LA MUSICA' : 'ALL MUSIC'}
@@ -356,46 +349,97 @@ async function renderHome() {
     </section>` : ''}
   `;
 
-  // Carica tracce async
-  loadTrackListPreview();
   initDiscPlay();
   pageEnter();
+}
+
+/** Home: "Da dove vuoi iniziare?" — tre porte per tre tipi di visitatore */
+function renderDoors(articles, videos, s) {
+  const it = state.lang === 'it';
+  const t = (a, b) => (it ? a : b);
+  const lesson = articles.find(a => a.categoria === 'lezione') || articles[0];
+  const video = videos.find(v => v.badgeIt) || videos[0];
+  const email = s.email || 'andreacetica@gmail.com';
+  const subject = encodeURIComponent(t('Richiesta: live / studio / collaborazione', 'Enquiry: live / studio / collaboration'));
+  const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+  const badge = video ? (it ? video.badgeIt : video.badgeEn) : '';
+
+  return `
+    <section class="doors-section">
+      <div class="section-inner">
+        <span class="section-label reveal" data-it="DA DOVE VUOI INIZIARE?" data-en="WHERE DO YOU WANT TO START?">${t('DA DOVE VUOI INIZIARE?', 'WHERE DO YOU WANT TO START?')}</span>
+        <div class="doors-grid">
+
+          <a class="door reveal" href="${lesson ? '/blog/' + lesson.slug : '/lezioni'}" data-link="${lesson ? '/blog/' + lesson.slug : '/lezioni'}">
+            <span class="door-num">01</span>
+            <h3 class="door-q">${t('Vuoi imparare a suonare?', 'Want to learn to play?')}</h3>
+            ${lesson ? `
+            <div class="door-preview door-preview-text cat-${lesson.categoria || 'news'}">
+              <span class="door-kicker">${t('ULTIMA LEZIONE', 'LATEST LESSON')}</span>
+              <span class="door-preview-title">${lesson.titolo}</span>
+            </div>` : `<p class="door-text">${t('Video lezioni, esercizi e il mio metodo.', 'Video lessons, exercises and my method.')}</p>`}
+            <span class="door-cta">${lesson ? t('Leggi la lezione', 'Read the lesson') : t('Vai alla didattica', 'Go to lessons')} ${arrow}</span>
+          </a>
+
+          <a class="door reveal" href="mailto:${email}?subject=${subject}">
+            <span class="door-num">02</span>
+            <h3 class="door-q">${t('Cerchi un batterista?', 'Looking for a drummer?')}</h3>
+            <p class="door-text">${t('Live, studio, orchestre e collaborazioni. Raccontami il tuo progetto.', 'Live shows, studio, orchestras and collaborations. Tell me about your project.')}</p>
+            <span class="door-cta">${t('Scrivimi', 'Write to me')} ${arrow}</span>
+          </a>
+
+          <a class="door reveal" href="/musica" data-link="/musica">
+            <span class="door-num">03</span>
+            <h3 class="door-q">${t('Vuoi ascoltare?', 'Want to listen?')}</h3>
+            ${video ? `
+            <div class="door-preview door-preview-video">
+              <img src="https://i.ytimg.com/vi/${video.id}/hqdefault.jpg" alt="${video.titolo}" loading="lazy" />
+              <span class="door-play"><svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg></span>
+              ${badge ? `<span class="door-badge">★ ${badge}</span>` : ''}
+            </div>
+            <span class="door-video-title">${video.titolo}</span>` : `<p class="door-text">${t('Video, cover e brani originali.', 'Videos, covers and original tracks.')}</p>`}
+            <span class="door-cta">${t('Guarda i video', 'Watch the videos')} ${arrow}</span>
+          </a>
+
+        </div>
+      </div>
+    </section>`;
 }
 
 function renderServiceCards(s) {
   const services = [
     {
       icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>`,
-      title_it: 'LIVE',   title_en: 'LIVE',
+      title_it: 'LIVE',   title_en: 'LIVE', link: '/bio',
       desc_it: s.servizio_live_it   || 'Performance ed energia dal vivo.',
       desc_en: s.servizio_live_en   || 'Performance and live energy.',
     },
     {
       icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="9"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>`,
-      title_it: 'STUDIO', title_en: 'STUDIO',
+      title_it: 'STUDIO', title_en: 'STUDIO', link: '/musica',
       desc_it: s.servizio_studio_it || 'Registrazioni, produzioni e collaborazioni.',
       desc_en: s.servizio_studio_en || 'Recordings, productions and collaborations.',
     },
     {
-      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>`,
-      title_it: 'COLLABORAZIONI', title_en: 'COLLABORATIONS',
-      desc_it: s.servizio_collab_it || 'Progetti e artisti con cui suono.',
-      desc_en: s.servizio_collab_en || 'Projects and artists I play with.',
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/></svg>`,
+      title_it: 'DIDATTICA', title_en: 'TEACHING', link: '/lezioni',
+      desc_it: s.servizio_didattica_it || 'Lezioni, video ed esercizi per batteristi di ogni livello.',
+      desc_en: s.servizio_didattica_en || 'Lessons, videos and exercises for drummers of every level.',
     },
     {
-      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>`,
-      title_it: 'MUSICA', title_en: 'MUSIC',
-      desc_it: s.servizio_musica_it || 'Ascolta i miei brani e le mie produzioni.',
-      desc_en: s.servizio_musica_en || 'Listen to my tracks and productions.',
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H19v15H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H19v-3"/><path d="M8 7h7M8 10h5"/></svg>`,
+      title_it: 'IL LIBRO', title_en: 'THE BOOK', link: '/lezioni',
+      desc_it: s.servizio_libro_it || '“Suona la Batteria”: il mio metodo, in italiano e in inglese.',
+      desc_en: s.servizio_libro_en || '“Suona la Batteria”: my method, in Italian and English.',
     },
   ];
 
   return services.map(sv => `
-    <div class="service-card reveal">
+    <a class="service-card reveal" href="${sv.link}" data-link="${sv.link}">
       <div class="service-icon">${sv.icon}</div>
       <h3 class="service-title" data-it="${sv.title_it}" data-en="${sv.title_en}">${state.lang === 'it' ? sv.title_it : sv.title_en}</h3>
       <p class="service-desc" data-it="${sv.desc_it}" data-en="${sv.desc_en}">${state.lang === 'it' ? sv.desc_it : sv.desc_en}</p>
-    </div>
+    </a>
   `).join('');
 }
 
@@ -472,7 +516,7 @@ async function renderMusica() {
       <div class="musica-page-inner" style="padding-top:3rem;">
         <div class="music-layout">
           <div class="music-player-visual reveal">
-            <div class="music-disc" id="music-disc">
+            <div class="music-disc playing" id="music-disc">
               <div class="disc-ring-1"></div>
               <div class="disc-inner">
                 <svg class="disc-logo" viewBox="0 0 60 60" fill="none">
@@ -481,14 +525,10 @@ async function renderMusica() {
                 </svg>
               </div>
             </div>
-            <button class="music-play-btn" id="disc-play-btn" aria-label="Play">
-              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            </button>
           </div>
           <div class="reveal">
-            <div class="track-list" id="track-list-full">
-              ${tracks.map((t, i) => trackItemHTML(t, i)).join('')}
-            </div>
+            <span class="section-label" data-it="ASCOLTA SU SPOTIFY" data-en="LISTEN ON SPOTIFY">${state.lang === 'it' ? 'ASCOLTA SU SPOTIFY' : 'LISTEN ON SPOTIFY'}</span>
+            <div class="spotify-wrap">${spotifyEmbedHTML(352)}</div>
           </div>
         </div>
       </div>
@@ -512,8 +552,6 @@ async function renderMusica() {
     </div>
   `;
   initMusicaVideos();
-  initTrackItems();
-  initDiscPlay();
   pageEnter();
 }
 
@@ -570,7 +608,7 @@ function initMusicaVideos() {
       const id = a.dataset.videoId;
       const wrap = document.createElement('div');
       wrap.className = 'musica-video-frame';
-      wrap.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" title="${a.getAttribute('aria-label') || ''}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="display:block;border:0;width:100%;height:100%;"></iframe>`;
+      wrap.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="${a.getAttribute('aria-label') || ''}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="display:block;border:0;width:100%;height:100%;"></iframe>`;
       a.replaceWith(wrap);
     });
   });
@@ -876,7 +914,7 @@ async function renderLezioni() {
             </div>
             ${libroVideo ? `
             <div class="libro-video">
-              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${libroVideo}" title="${libroTitolo}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
+              <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/${libroVideo}" title="${libroTitolo}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
             </div>` : ''}
           </div>
         </section>` : ''}
@@ -951,7 +989,7 @@ function lezioneVideoHTML(v) {
   return `
     <div class="lezione-card reveal">
       <div class="lezione-video">
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${v.id}" title="${titolo}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
+        <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/${v.id}" title="${titolo}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
       </div>
       <div class="lezione-body">
         <h3 class="lezione-title">${titolo}</h3>
@@ -964,7 +1002,7 @@ function lezioneVideoHTML(v) {
 /* ── CONTATTI ────────────────────────────────────────────────── */
 async function renderContatti() {
   const s = await loadSettings();
-  const email = s.email || 'info@tuodominio.com';
+  const email = s.email || 'andreacetica@gmail.com';
   const tel   = s.telefono || '+39 000 0000000';
   const citta = s.citta || 'Milano, Italia';
 
@@ -1010,16 +1048,16 @@ async function renderContatti() {
 }
 
 /* ── PRIVACY / COOKIE ────────────────────────────────────────── */
-async function renderPrivacy() {
-  updateSEO({ title: 'Privacy Policy', slug: 'privacy' });
-  $('#app').innerHTML = `<div class="article-page page-enter"><h1 class="article-title">Privacy Policy</h1><div class="article-body"><p data-it="Inserisci qui il testo della tua Privacy Policy." data-en="Insert your Privacy Policy text here.">${state.lang === 'it' ? 'Inserisci qui il testo della tua Privacy Policy.' : 'Insert your Privacy Policy text here.'}</p></div></div>`;
+async function renderLegalPage(file, slug, fallbackTitle) {
+  const raw = await fetchText(`content/${file}`).catch(() => '');
+  const { meta, body } = parseFrontmatter(raw);
+  const title = meta[`titolo_${state.lang}`] || meta.titolo_it || fallbackTitle;
+  updateSEO({ title, slug });
+  $('#app').innerHTML = `<div class="article-page page-enter"><h1 class="article-title">${title}</h1><div class="article-body">${marked.parse(extractLang(body, state.lang))}</div></div>`;
   pageEnter();
 }
-async function renderCookie() {
-  updateSEO({ title: 'Cookie Policy', slug: 'cookie' });
-  $('#app').innerHTML = `<div class="article-page page-enter"><h1 class="article-title">Cookie Policy</h1><div class="article-body"><p data-it="Inserisci qui il testo della tua Cookie Policy." data-en="Insert your Cookie Policy text here.">${state.lang === 'it' ? 'Inserisci qui il testo della tua Cookie Policy.' : 'Insert your Cookie Policy text here.'}</p></div></div>`;
-  pageEnter();
-}
+async function renderPrivacy() { await renderLegalPage('privacy.md', 'privacy', 'Privacy Policy'); }
+async function renderCookie()  { await renderLegalPage('cookie.md', 'cookie', 'Cookie Policy'); }
 
 function render404() {
   updateSEO({ title: '404 — Pagina non trovata' });

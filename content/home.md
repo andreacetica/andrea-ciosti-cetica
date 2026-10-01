@@ -19,16 +19,10 @@ seo_desc_it: Batterista, percussionista e sound lover. Scopri la musica e i live
 seo_desc_en: Drummer, percussionist and sound lover. Discover the music and live shows of Andrea Ciosti Cetica.
 ---
 
-Batterista, percussionista e sound lover.
-Mi muovo tra generi e contaminazioni,
-alla ricerca del groove perfetto.
-Collaboro con artisti e progetti
-che puntano alla sostanza.
+Batterista, percussionista e sound lover. Mi muovo tra generi e contaminazioni, alla ricerca del groove perfetto: ho suonato dall'Arena di Verona alle discoteche.
+Sono l'autore di "Suona la Batteria", il mio metodo pubblicato in italiano e in inglese, e sono docente di ruolo: ogni settimana condivido lezioni e consigli per chi suona la batteria.
 
 ---EN---
 
-Drummer, percussionist and sound lover.
-I move between genres and musical contaminations,
-always searching for the perfect groove.
-I collaborate with artists and projects
-that aim for substance over style.
+Drummer, percussionist and sound lover. I move between genres and musical contaminations, always searching for the perfect groove: I've played everywhere from the Arena di Verona to nightclubs.
+I'm the author of "Suona la Batteria", my drum method published in Italian and English, and a tenured teacher: every week I share lessons and tips for drummers.
