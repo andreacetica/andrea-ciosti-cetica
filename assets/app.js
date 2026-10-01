@@ -711,8 +711,18 @@ async function renderLezioni() {
   const libroSottotitolo = L('libro_sottotitolo');
   const libroDesc = L('libro_desc');
   const libroDettagli = L('libro_dettagli').split('·').map(t => t.trim()).filter(Boolean);
-  const libroImgRaw = meta.libro_immagine || '';
-  const libroImg = /^https?:\/\//.test(libroImgRaw) ? libroImgRaw : (libroImgRaw ? `assets/images/${libroImgRaw}` : '');
+  const imgSrc = (raw) => !raw ? '' : (/^https?:\/\//.test(raw) ? raw : `assets/images/${raw}`);
+  const libroImgIt = imgSrc(meta.libro_immagine || '');
+  const libroImgEn = imgSrc(meta.libro_immagine_en || '');
+  const libroTitoloEn = meta.libro_titolo_en || '';
+  const libroTitoloShown = (state.lang === 'en' && libroTitoloEn) ? libroTitoloEn : libroTitolo;
+  // Copertina davanti = lingua attuale, dietro = l'altra edizione
+  const coverFront = state.lang === 'en' && libroImgEn
+    ? { src: libroImgEn, alt: libroTitoloEn || libroTitolo }
+    : { src: libroImgIt, alt: libroTitolo };
+  const coverBack = state.lang === 'en' && libroImgEn
+    ? (libroImgIt ? { src: libroImgIt, alt: libroTitolo } : null)
+    : (libroImgEn ? { src: libroImgEn, alt: libroTitoloEn || libroTitolo } : null);
   const libroLink = meta.libro_link || '#';
   const libroVideo = meta.libro_video || '';
 
@@ -733,12 +743,16 @@ async function renderLezioni() {
         <section class="libro-hero reveal">
           <div class="libro-hero-grid">
             <div class="libro-info">
-              <div class="libro-cover">
-                ${libroImg ? `<img src="${libroImg}" alt="${libroTitolo}" />` : placeholderImg('libro')}
+              <div class="libro-covers${coverBack ? ' has-two' : ''}">
+                ${coverBack ? `<div class="libro-cover libro-cover-back"><img src="${coverBack.src}" alt="${coverBack.alt}" loading="lazy" /></div>` : ''}
+                <div class="libro-cover libro-cover-front">
+                  ${coverFront.src ? `<img src="${coverFront.src}" alt="${coverFront.alt}" />` : placeholderImg('libro')}
+                </div>
+                ${coverBack ? `<span class="libro-lang-badge" data-it="ITALIANO · ENGLISH" data-en="ENGLISH · ITALIANO">${state.lang === 'en' ? 'ENGLISH · ITALIANO' : 'ITALIANO · ENGLISH'}</span>` : ''}
               </div>
               <div class="libro-content">
                 <span class="section-label" data-it="IL MIO LIBRO" data-en="MY BOOK">${state.lang === 'it' ? 'IL MIO LIBRO' : 'MY BOOK'}</span>
-                <h2 class="libro-title">${libroTitolo}</h2>
+                <h2 class="libro-title">${libroTitoloShown}</h2>
                 ${libroSottotitolo ? `<p class="libro-subtitle">${libroSottotitolo}</p>` : ''}
                 ${libroDesc ? `<p class="libro-desc">${libroDesc}</p>` : ''}
                 ${libroDettagli.length ? `<ul class="libro-tags">${libroDettagli.map(t => `<li>${t}</li>`).join('')}</ul>` : ''}

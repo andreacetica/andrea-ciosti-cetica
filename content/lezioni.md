@@ -11,6 +11,8 @@ seo_desc_en: Video lessons, practical tips and my book to learn drums.
 # — IL MIO LIBRO — (sezione in evidenza in cima alla pagina)
 # Lascia libro_titolo vuoto se non vuoi mostrare questa sezione.
 libro_titolo: Suona la Batteria
+# Titolo dell'edizione inglese (mostrato quando il sito è in inglese)
+libro_titolo_en: Play the Drum Set!
 libro_sottotitolo_it: Metodo dedicato ai bambini
 libro_sottotitolo_en: A drum method for children
 libro_desc_it: Il mio metodo per far scoprire la batteria ai più piccoli, passo dopo passo. Esercizi e brani progressivi, con QR code per ascoltare le demo audio di ogni esercizio. Pubblicato da Edizioni Eufonia nel 2021 e tradotto in inglese nel 2023.
@@ -20,6 +22,8 @@ libro_dettagli_it: Edizioni Eufonia · 84 pagine · Audio con QR code
 libro_dettagli_en: Edizioni Eufonia · 84 pages · Audio via QR code
 # Copertina: nome di un file in assets/images/ (es. libro-cover.jpg) oppure un link completo
 libro_immagine: libro_cover.png
+# Copertina dell'edizione inglese (se c'è, le due copertine si vedono sovrapposte)
+libro_immagine_en: libro-cover-en.jpg
 # Link dove si può acquistare il libro
 libro_link: https://www.edizionieufonia.it/prodotto/suona-la-batteria/
 # ID del video promozionale su YouTube (la parte dopo v= nel link)

@@ -818,20 +818,47 @@ section { padding: 6rem 2rem; }
 }
 .libro-info {
   display: grid;
-  grid-template-columns: 200px minmax(0, 1fr);
+  grid-template-columns: 240px minmax(0, 1fr);
   gap: 2rem;
   align-items: center;
 }
+.libro-covers {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+  padding-bottom: 1.5rem;
+}
+.libro-covers.has-two { margin-right: 40px; }
 .libro-cover {
   aspect-ratio: 3/4;
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--grey);
   box-shadow: 0 24px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06);
-  transform: perspective(900px) rotateY(8deg);
-  transition: transform var(--transition);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.libro-cover:hover { transform: perspective(900px) rotateY(0deg) scale(1.03); }
+.libro-cover-front {
+  position: relative; z-index: 2;
+  transform: perspective(900px) rotateY(8deg);
+}
+.libro-covers.has-two .libro-cover-front { transform: rotate(-4deg); }
+.libro-cover-back {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 1;
+  transform: translate(38px, -12px) rotate(7deg);
+  filter: brightness(0.85);
+}
+.libro-covers:hover .libro-cover-front { transform: rotate(-7deg) translateX(-14px) scale(1.03); }
+.libro-covers:not(.has-two):hover .libro-cover-front { transform: perspective(900px) rotateY(0deg) scale(1.03); }
+.libro-covers:hover .libro-cover-back { transform: translate(70px, -18px) rotate(12deg); filter: brightness(1); }
+.libro-lang-badge {
+  position: absolute; left: 50%; bottom: 0; z-index: 3;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.62rem; letter-spacing: 0.14em;
+  background: var(--accent); color: #fff;
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius);
+}
 .libro-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .libro-title {
   font-family: var(--font-display);
@@ -883,7 +910,8 @@ section { padding: 6rem 2rem; }
 
 @media (max-width: 600px) {
   .libro-info { grid-template-columns: 1fr; }
-  .libro-cover { max-width: 220px; margin: 0 auto; transform: none; }
+  .libro-covers { max-width: 190px; margin: 1rem auto 0; }
+  .libro-covers.has-two { margin: 1rem auto 0; left: -20px; }
   .libro-content { text-align: center; }
   .libro-tags { justify-content: center; }
 }
