@@ -4,7 +4,7 @@ titolo_it: Il paradiddle: il rudimento che apre mille porte
 titolo_en: The paradiddle: the rudiment that opens a thousand doors
 data: 2026-10-01
 categoria: lezione
-stato: bozza
+stato: pubblicato
 seo_desc_it: Cos'è il paradiddle, come si studia passo passo e come trasformarlo in groove e fill sulla batteria. Una lezione pratica con esercizi.
 seo_desc_en: What the paradiddle is, how to practice it step by step and how to turn it into grooves and fills on the drum set. A practical lesson.
 ---
