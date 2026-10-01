@@ -453,6 +453,8 @@ async function renderMusica() {
   const raw = await fetchText('content/musica.md').catch(() => '');
   const { meta, body } = parseFrontmatter(raw);
   const tracks = parseTracks(raw);
+  const videos = parseMusicaVideos(raw);
+  const ytChannel = (state.settings && state.settings.youtube) || '';
   const titleIt = meta.titolo_it || 'Musica';
   const titleEn = meta.titolo_en || 'Music';
   const title = state.lang === 'it' ? titleIt : titleEn;
@@ -490,11 +492,88 @@ async function renderMusica() {
           </div>
         </div>
       </div>
+      ${videos.length ? `
+      <section class="musica-videos">
+        <div class="musica-videos-inner">
+          <span class="section-label reveal" data-it="VIDEO" data-en="VIDEOS">VIDEO</span>
+          <h2 class="section-title reveal" data-it="GUARDA" data-en="WATCH">${state.lang === 'it' ? 'GUARDA' : 'WATCH'}</h2>
+          <div class="musica-video-grid">
+            ${videos.map((v, i) => musicaVideoHTML(v, i)).join('')}
+          </div>
+          ${ytChannel ? `
+          <div class="musica-videos-more reveal">
+            <a href="${ytChannel}" target="_blank" rel="noopener" class="btn-outline yt-more">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+              <span data-it="TUTTI I VIDEO SUL MIO CANALE YOUTUBE" data-en="ALL VIDEOS ON MY YOUTUBE CHANNEL">${state.lang === 'it' ? 'TUTTI I VIDEO SUL MIO CANALE YOUTUBE' : 'ALL VIDEOS ON MY YOUTUBE CHANNEL'}</span>
+            </a>
+          </div>` : ''}
+        </div>
+      </section>` : ''}
     </div>
   `;
+  initMusicaVideos();
   initTrackItems();
   initDiscPlay();
   pageEnter();
+}
+
+/**
+ * Video nella pagina Musica. Formato in musica.md:
+ * - video: ID_YOUTUBE | Titolo | Etichetta IT | Etichetta EN
+ * Se un video su YouTube non si può vedere fuori da YouTube (copyright),
+ * scrivi yt: davanti all'ID (es. yt:abc123) e il click aprirà YouTube.
+ */
+function parseMusicaVideos(raw) {
+  const out = [];
+  for (const line of raw.split('\n')) {
+    const m = line.match(/^[-*]\s+video:\s*(.+)$/i);
+    if (!m) continue;
+    const [idRaw = '', titolo = '', tagIt = '', tagEn = '', badgeIt = '', badgeEn = '', badgeLink = ''] = m[1].split('|').map(p => p.trim());
+    if (!idRaw) continue;
+    const external = /^yt:/i.test(idRaw);
+    out.push({ id: idRaw.replace(/^yt:/i, ''), external, titolo, tagIt, tagEn: tagEn || tagIt,
+               badgeIt, badgeEn: badgeEn || badgeIt, badgeLink });
+  }
+  return out;
+}
+
+function musicaVideoHTML(v, i) {
+  const tag = state.lang === 'en' ? v.tagEn : v.tagIt;
+  const badge = state.lang === 'en' ? v.badgeEn : v.badgeIt;
+  const badgeHTML = !badge ? '' : (v.badgeLink
+    ? `<a class="musica-video-badge" href="${v.badgeLink}" target="_blank" rel="noopener">★ ${badge}</a>`
+    : `<span class="musica-video-badge">★ ${badge}</span>`);
+  const thumb = `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`;
+  const ytUrl = `https://www.youtube.com/watch?v=${v.id}`;
+  return `
+    <div class="musica-video-card reveal${i === 0 ? ' featured' : ''}">
+      ${badgeHTML}
+      <a class="musica-video-thumb" href="${ytUrl}" target="_blank" rel="noopener"
+         data-video-id="${v.id}" data-external="${v.external ? '1' : '0'}" aria-label="${v.titolo}">
+        <img src="${thumb}" alt="${v.titolo}" loading="lazy" />
+        <span class="musica-video-play"><svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg></span>
+      </a>
+      <div class="musica-video-body">
+        <h3 class="musica-video-title">${v.titolo}</h3>
+        ${tag ? `<span class="musica-video-tag">${tag}</span>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+/** Click sulla copertina: carica il video nella pagina (o apre YouTube se segnato con yt:) */
+function initMusicaVideos() {
+  $$('.musica-video-thumb').forEach(a => {
+    a.addEventListener('click', e => {
+      if (a.dataset.external === '1') return; // lascia aprire YouTube
+      e.preventDefault();
+      const id = a.dataset.videoId;
+      const wrap = document.createElement('div');
+      wrap.className = 'musica-video-frame';
+      wrap.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" title="${a.getAttribute('aria-label') || ''}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="display:block;border:0;width:100%;height:100%;"></iframe>`;
+      a.replaceWith(wrap);
+    });
+  });
 }
 
 function parseTracks(raw) {
@@ -503,6 +582,7 @@ function parseTracks(raw) {
   let inList = false;
   for (const line of lines) {
     // Cerca righe tipo: - Titolo Brano | 3:45 | genere
+    if (/^[-*]\s+video:/i.test(line)) continue;
     const m = line.match(/^[-*]\s+(.+?)\s*\|\s*([\d:]+)(?:\s*\|\s*(.+))?/);
     if (m) {
       tracks.push({ nome: m[1].trim(), durata: m[2].trim(), meta: m[3] ? m[3].trim() : '' });
