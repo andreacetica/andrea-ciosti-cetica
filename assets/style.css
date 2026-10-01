@@ -452,7 +452,6 @@ section { padding: 6rem 2rem; }
   content: '';
   position: absolute; inset: 0;
   background: linear-gradient(to bottom, transparent 60%, rgba(10,10,10,0.6));
-  pointer-events: none; Il blocco deve diventare: .bio-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 60%, rgba(10,10,10,0.6)); pointer-events: none; }
 }
 .bio-image img {
   width: 100%; height: 100%;
@@ -758,6 +757,79 @@ section { padding: 6rem 2rem; }
   overflow: hidden;
 }
 
+/* ── LEZIONI / DIDATTICA PAGE ────────────────────────────────── */
+.lezioni-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 4rem 2rem;
+}
+.lezioni-section { margin-bottom: 5rem; }
+.lezioni-section:last-child { margin-bottom: 0; }
+.lezioni-video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.lezione-card {
+  background: var(--black);
+  border: 1px solid var(--grey);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color var(--transition), transform var(--transition);
+}
+.lezione-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.lezione-video {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--grey);
+}
+.lezione-body { padding: 1.5rem; }
+.lezione-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+.lezione-desc {
+  font-size: 0.85rem;
+  color: var(--grey3);
+  line-height: 1.7;
+}
+
+.libro-section {
+  background: var(--black2);
+  border: 1px solid var(--grey);
+  border-radius: var(--radius);
+  padding: 3rem;
+}
+.libro-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.libro-cover {
+  aspect-ratio: 3/4;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--grey);
+}
+.libro-cover img { width: 100%; height: 100%; object-fit: cover; }
+.libro-content p {
+  color: var(--white2);
+  margin: 1.25rem 0 1.75rem;
+  font-size: 0.975rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+  .lezioni-video-grid { grid-template-columns: 1fr; }
+  .libro-section { padding: 2rem; }
+  .libro-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .libro-cover { max-width: 240px; margin: 0 auto; }
+}
+
 /* ── BLOG PAGE ───────────────────────────────────────────────── */
 .page-hero {
   background: var(--black2);
@@ -937,7 +1009,6 @@ section { padding: 6rem 2rem; }
   margin-top: 3rem;
   align-items: start;
 }
-.contatti-grid-single { grid-template-columns: 1fr; }
 .contatti-info p {
   font-size: 0.975rem;
   color: var(--white2);
@@ -960,7 +1031,32 @@ section { padding: 6rem 2rem; }
 .contact-item-text { font-size: 0.9rem; color: var(--white2); }
 .contact-item-text a { transition: color var(--transition); }
 .contact-item-text a:hover { color: var(--accent); }
-/* ── FOOTER──────────────────────────────────────────────────── */
+.contatti-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-field {
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
+.form-field label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--grey3);
+}
+.form-field input,
+.form-field textarea {
+  background: var(--black2);
+  border: 1px solid var(--grey);
+  color: var(--white);
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  transition: border-color var(--transition);
+  outline: none;
+}
+.form-field input:focus,
+.form-field textarea:focus { border-color: var(--accent); }
+.form-field textarea { min-height: 140px; resize: vertical; }
+
+/* ── FOOTER ──────────────────────────────────────────────────── */
 #footer {
   background: var(--black2);
   border-top: 1px solid var(--grey);

@@ -15,13 +15,13 @@ seo_desc_en: Drummer, percussionist and sound lover. Passion, groove and sonic r
 og_immagine: og-cover.jpg
 
 # ── CONTATTI ─────────────────────────────────────────────
-email: info@tuodominio.com
-telefono: +39 000 0000000
-citta: Milano, Italia
+email: andreacetica@gmail.com
+telefono: +39 347 1851955
+citta: Arezzo, Italia
 
 # ── SOCIAL ───────────────────────────────────────────────
-instagram: https://instagram.com/tuoprofilo
-youtube: https://youtube.com/@tuocanale
+instagram: https://www.instagram.com/andreaciosticetica_drummer/
+youtube: https://youtube.com/@andreaciosticetica
 spotify: https://open.spotify.com/artist/5GjTujdCOrZnZWFh38smdR
 
 # ── FOOTER ───────────────────────────────────────────────

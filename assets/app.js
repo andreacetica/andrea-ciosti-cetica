@@ -150,6 +150,7 @@ const routes = {
   '/musica':    renderMusica,
   '/gallery':   renderGallery,
   '/blog':      renderBlog,
+  '/lezioni':   renderLezioni,
   '/contatti':  renderContatti,
   '/privacy':   renderPrivacy,
   '/cookie':    renderCookie,
@@ -193,7 +194,7 @@ async function navigate(path, push = true) {
 
 function updateActiveNav(path) {
   $$('.nav-links a, .mobile-menu a').forEach(a => {
-    a.classList.toggle('active', a.dataset.link === path || (path.startsWith('/blog/') && a.dataset.link === '/blog'));
+    a.classList.toggle('active', a.dataset.link === path || (path.startsWith('/blog/') && a.dataset.link === '/lezioni'));
   });
 }
 
@@ -248,7 +249,12 @@ async function renderHome() {
             SCOPRI DI PIÙ
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="${s.spotify || '#'}" target="_blank" rel="noopener" class="btn-play"> <div class="play-circle"> <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg> </div> <div class="play-label" data-it="ASCOLTA<br>IL MIO SOUND" data-en="LISTEN TO<br>MY SOUND">ASCOLTA<br>IL MIO SOUND</div> </a>
+          <button class="btn-play" onclick="void(0)">
+            <div class="play-circle">
+              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+            <div class="play-label" data-it="ASCOLTA<br>IL MIO SOUND" data-en="LISTEN TO<br>MY SOUND">ASCOLTA<br>IL MIO SOUND</div>
+          </button>
         </div>
       </div>
     </section>
@@ -258,13 +264,12 @@ async function renderHome() {
       <div class="section-inner bio-grid">
         <div class="bio-image reveal">
           <div class="bio-image-line"></div>
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/FeCcAQFvMUE" title="Andrea Ciosti Cetica" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
+          ${placeholderImg('bio')}
         </div>
         <div class="bio-text reveal">
           <span class="section-label">BIO</span>
           <h2 class="section-title" data-it="CHI SONO" data-en="ABOUT ME">${state.lang === 'it' ? 'CHI SONO' : 'ABOUT ME'}</h2>
-          <div cl
-          ass="bio-short">${marked.parse(extractLang(hBody, state.lang).slice(0, 600))}</div>
+          <div class="bio-short">${marked.parse(extractLang(hBody, state.lang).slice(0, 600))}</div>
           <div class="bio-stats">
             <div class="stat-item">
               <span class="stat-number">${hMeta.anni_esperienza || '10'}+</span>
@@ -331,17 +336,17 @@ async function renderHome() {
       </div>
     </section>
 
-    <!-- NEWS preview -->
+    <!-- DIDATTICA preview -->
     ${newsArticles.length ? `
     <section class="news-section">
       <div class="section-inner">
-        <span class="section-label reveal" data-it="ULTIME NEWS" data-en="LATEST NEWS">${state.lang === 'it' ? 'ULTIME NEWS' : 'LATEST NEWS'}</span>
+        <span class="section-label reveal" data-it="DALLA DIDATTICA" data-en="FROM THE LESSONS">${state.lang === 'it' ? 'DALLA DIDATTICA' : 'FROM THE LESSONS'}</span>
         <div class="news-grid">
           ${newsArticles.slice(0, 3).map(a => newsCardHTML(a)).join('')}
         </div>
         <br><br>
-        <a href="/blog" data-link="/blog" class="btn-text reveal" data-it="VEDI TUTTE LE NEWS" data-en="ALL NEWS">
-          ${state.lang === 'it' ? 'VEDI TUTTE LE NEWS' : 'ALL NEWS'}
+        <a href="/lezioni" data-link="/lezioni" class="btn-text reveal" data-it="VAI ALLA DIDATTICA" data-en="GO TO LESSONS">
+          ${state.lang === 'it' ? 'VAI ALLA DIDATTICA' : 'GO TO LESSONS'}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -685,6 +690,135 @@ async function renderArticle(slug) {
     </div>
   `;
   pageEnter();
+}
+
+/* ── LEZIONI (DIDATTICA) ─────────────────────────────────────── */
+async function renderLezioni() {
+  const [raw, blogRaw] = await Promise.all([
+    fetchText('content/lezioni.md').catch(() => ''),
+    fetchText('content/blog.md').catch(() => ''),
+  ]);
+  const { meta, body } = parseFrontmatter(raw);
+  const videos = parseLezioniVideos(body);
+  const tips = await loadBlogIndex(blogRaw);
+
+  const titleIt = meta.titolo_it || 'Didattica';
+  const titleEn = meta.titolo_en || 'Lessons';
+  const title = state.lang === 'it' ? titleIt : titleEn;
+
+  const libroTitolo = meta.libro_titolo || '';
+  const libroDesc = state.lang === 'it' ? (meta.libro_desc_it || '') : (meta.libro_desc_en || meta.libro_desc_it || '');
+  const libroImg = meta.libro_immagine || '';
+  const libroLink = meta.libro_link || '#';
+
+  updateSEO({ title, description: meta[`seo_desc_${state.lang}`], slug: 'lezioni' });
+
+  $('#app').innerHTML = `
+    <div class="lezioni-page page-enter">
+      <div class="page-hero">
+        <div class="page-hero-inner">
+          <span class="section-label" data-it="DIDATTICA" data-en="LESSONS">DIDATTICA</span>
+          <h1 class="page-hero-title" data-it="${titleIt}" data-en="${titleEn}">${title}</h1>
+        </div>
+      </div>
+
+      <div class="lezioni-inner">
+
+        <section class="lezioni-section reveal">
+          <span class="section-label" data-it="VIDEO LEZIONI" data-en="VIDEO LESSONS">${state.lang === 'it' ? 'VIDEO LEZIONI' : 'VIDEO LESSONS'}</span>
+          <div class="lezioni-video-grid">
+            ${videos.length
+              ? videos.map(v => lezioneVideoHTML(v)).join('')
+              : `<p style="color:var(--grey3)" data-it="Nessun video pubblicato ancora." data-en="No videos published yet.">${state.lang === 'it' ? 'Nessun video pubblicato ancora.' : 'No videos published yet.'}</p>`
+            }
+          </div>
+        </section>
+
+        ${libroTitolo ? `
+        <section class="libro-section reveal">
+          <div class="libro-grid">
+            <div class="libro-cover">
+              ${libroImg ? `<img src="assets/images/${libroImg}" alt="${libroTitolo}" />` : placeholderImg('libro')}
+            </div>
+            <div class="libro-content">
+              <span class="section-label" data-it="IL MIO LIBRO" data-en="MY BOOK">${state.lang === 'it' ? 'IL MIO LIBRO' : 'MY BOOK'}</span>
+              <h2 class="section-title">${libroTitolo}</h2>
+              <p>${libroDesc}</p>
+              <a href="${libroLink}" target="_blank" rel="noopener" class="btn-primary" data-it="SCOPRI IL LIBRO" data-en="DISCOVER THE BOOK">
+                ${state.lang === 'it' ? 'SCOPRI IL LIBRO' : 'DISCOVER THE BOOK'}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </section>` : ''}
+
+        <section class="lezioni-section reveal">
+          <span class="section-label" data-it="CONSIGLI SCRITTI" data-en="WRITTEN TIPS">${state.lang === 'it' ? 'CONSIGLI SCRITTI' : 'WRITTEN TIPS'}</span>
+          <div class="news-grid">
+            ${tips.length
+              ? tips.slice(0, 3).map(a => newsCardHTML(a)).join('')
+              : `<p style="color:var(--grey3)" data-it="Nessun consiglio pubblicato ancora." data-en="No tips published yet.">${state.lang === 'it' ? 'Nessun consiglio pubblicato ancora.' : 'No tips published yet.'}</p>`
+            }
+          </div>
+          ${tips.length ? `
+          <br><br>
+          <a href="/blog" data-link="/blog" class="btn-text reveal" data-it="VEDI TUTTI I CONSIGLI" data-en="ALL TIPS">
+            ${state.lang === 'it' ? 'VEDI TUTTI I CONSIGLI' : 'ALL TIPS'}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>` : ''}
+        </section>
+
+      </div>
+    </div>
+  `;
+  pageEnter();
+}
+
+/**
+ * Formato riga in lezioni.md:
+ * - ID_VIDEO | Titolo IT | Descrizione IT | Titolo EN | Descrizione EN
+ * Titolo EN e Descrizione EN sono facoltativi: se mancano si usa l'italiano.
+ */
+function parseLezioniVideos(body) {
+  const videos = [];
+  const lines = body.split('\n');
+  for (const line of lines) {
+    const m = line.match(/^[-*]\s+(.+)$/);
+    if (!m) continue;
+    const parts = m[1].split('|').map(p => p.trim());
+    if (parts.length < 2 || !parts[0] || /\s/.test(parts[0])) continue;
+    const [id, titoloIt = '', descIt = '', titoloEn = '', descEn = ''] = parts;
+    videos.push({
+      id,
+      titoloIt,
+      descIt,
+      titoloEn: titoloEn || titoloIt,
+      descEn: descEn || descIt,
+    });
+  }
+  return videos;
+}
+
+/** Rende cliccabili i link (https://...) scritti nella descrizione */
+function linkify(text) {
+  return text.replace(/(https?:\/\/[^\s<]+[^\s<.,;:!?)])/g,
+    '<a href="$1" target="_blank" rel="noopener">$1</a>');
+}
+
+function lezioneVideoHTML(v) {
+  const titolo = state.lang === 'en' ? v.titoloEn : v.titoloIt;
+  const desc = state.lang === 'en' ? v.descEn : v.descIt;
+  return `
+    <div class="lezione-card reveal">
+      <div class="lezione-video">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${v.id}" title="${titolo}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
+      </div>
+      <div class="lezione-body">
+        <h3 class="lezione-title">${titolo}</h3>
+        ${desc ? `<p class="lezione-desc">${linkify(desc)}</p>` : ''}
+      </div>
+    </div>
+  `;
 }
 
 /* ── CONTATTI ────────────────────────────────────────────────── */
