@@ -1599,3 +1599,16 @@ a.musica-video-badge:hover { transform: scale(1.05); }
   padding: 0.5rem;
 }
 .contact-copy:hover { color: var(--white); }
+
+/* Home, sezione Chi sono: quando al posto della foto c'è un video,
+   il riquadro prende il formato del video (16:9) invece di quello verticale */
+.bio-image:has(iframe) { aspect-ratio: 16 / 9; }
+.bio-image:has(iframe)::after { display: none; }
+.bio-grid:has(.bio-image iframe) { grid-template-columns: 1.15fr 1fr; gap: 4rem; }
+@media (max-width: 900px) {
+  .bio-grid:has(.bio-image iframe) { grid-template-columns: 1fr; gap: 2.5rem; }
+  .bio-image:has(iframe) { max-width: 100%; }
+}
+
+/* spazio tra il testo di Chi sono e "Leggi di più" */
+.bio-text .bio-short { margin-bottom: 2rem; }

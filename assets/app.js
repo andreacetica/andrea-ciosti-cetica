@@ -283,7 +283,7 @@ async function renderHome() {
       <div class="section-inner bio-grid">
         <div class="bio-image reveal">
           <div class="bio-image-line"></div>
-          <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/FeCcAQFvMUE" title="Andrea Ciosti Cetica" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
+          <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/Yur_jpESVxo" title="Shyntetic Opera — Andrea Ciosti Cetica" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
         </div>
         <div class="bio-text reveal">
           <span class="section-label">BIO</span>
