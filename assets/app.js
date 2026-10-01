@@ -249,12 +249,12 @@ async function renderHome() {
             SCOPRI DI PIÙ
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <button class="btn-play" onclick="void(0)">
+          <a href="${s.spotify || '#'}" target="_blank" rel="noopener" class="btn-play">
             <div class="play-circle">
               <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
             <div class="play-label" data-it="ASCOLTA<br>IL MIO SOUND" data-en="LISTEN TO<br>MY SOUND">ASCOLTA<br>IL MIO SOUND</div>
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -264,7 +264,7 @@ async function renderHome() {
       <div class="section-inner bio-grid">
         <div class="bio-image reveal">
           <div class="bio-image-line"></div>
-          ${placeholderImg('bio')}
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/FeCcAQFvMUE" title="Andrea Ciosti Cetica" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="display:block;border:0;"></iframe>
         </div>
         <div class="bio-text reveal">
           <span class="section-label">BIO</span>

@@ -452,6 +452,7 @@ section { padding: 6rem 2rem; }
   content: '';
   position: absolute; inset: 0;
   background: linear-gradient(to bottom, transparent 60%, rgba(10,10,10,0.6));
+  pointer-events: none;
 }
 .bio-image img {
   width: 100%; height: 100%;
@@ -1009,6 +1010,7 @@ section { padding: 6rem 2rem; }
   margin-top: 3rem;
   align-items: start;
 }
+.contatti-grid-single { grid-template-columns: 1fr; }
 .contatti-info p {
   font-size: 0.975rem;
   color: var(--white2);
