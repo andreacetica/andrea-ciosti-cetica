@@ -23,7 +23,7 @@ Il palco è il mio posto preferito.
 
 ## Collaborazioni
 
-Nel corso degli anni ho lavorato con nomi del panorama indipendente italiano e internazionale, in contesti diversi tra loro — dall'orchestra alle discoteche. Alcune collaborazioni sono diventate amicizie, e le amicizie spesso sono diventate nuova musica. Accanto al palco c'è l'insegnamento: sono docente di ruolo al Liceo "Dante-Alberti" di Firenze e collaboro con scuole di musica private, dove porto ai ragazzi la stessa passione che metto in ogni concerto.
+Nel corso degli anni ho lavorato con nomi del panorama indipendente italiano e internazionale, in contesti diversi tra loro — dall'orchestra alle discoteche. Alcune collaborazioni sono diventate amicizie, e le amicizie spesso sono diventate nuova musica. Tra gli incontri più belli, quello con Marky Ramone, leggendario batterista dei Ramones, con cui ho avuto l'onore di suonare. Accanto al palco c'è l'insegnamento: sono docente di ruolo al Liceo "Dante-Alberti" di Firenze e collaboro con scuole di musica private, dove porto ai ragazzi la stessa passione che metto in ogni concerto.
 
 ---EN---
 
@@ -40,4 +40,4 @@ The stage is my favorite place.
 
 ## Collaborations
 
-Over the years I've worked with names from the Italian and international independent scene, across very different contexts — from orchestras to nightclubs. Some collaborations turned into friendships, and friendships often turned into new music. Alongside the stage there's teaching: I'm a tenured teacher at the "Dante-Alberti" high school in Florence, and I work with private music schools, bringing young students the same passion I put into every show.
+Over the years I've worked with names from the Italian and international independent scene, across very different contexts — from orchestras to nightclubs. Some collaborations turned into friendships, and friendships often turned into new music. One of the best encounters: Marky Ramone, the legendary Ramones drummer, with whom I had the honour of playing. Alongside the stage there's teaching: I'm a tenured teacher at the "Dante-Alberti" high school in Florence, and I work with private music schools, bringing young students the same passion I put into every show.

@@ -35,6 +35,7 @@ seo_desc_en: Listen to Andrea Ciosti Cetica's music — tracks, productions and 
 # - The Pocket | 4:33 | Session
 # - Resonance | 5:47 | Original
 
+- video: 51hirh0pyLQ | Con Marky Ramone — Hey Ho, Let's Go! | Live con una leggenda | Live with a legend | Con Marky Ramone (Ramones) | With Marky Ramone (Ramones) | https://youtu.be/51hirh0pyLQ
 - video: Yur_jpESVxo | Synthetic Opera | Acoustic/electro sound | Acoustic/electro sound
 - video: -v8BIZLvWDQ | Dies Irae | Electro mash-up | Electro mash-up
 - video: fGH4K_drFTc | Hit Me — Dirty Loops | Drum cover | Drum cover
