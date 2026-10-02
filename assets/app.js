@@ -838,6 +838,7 @@ async function renderLezioni() {
   ]);
   const { meta, body } = parseFrontmatter(raw);
   const videos = parseLezioniVideos(body);
+  const allievi = parseAllieviVideos(body);
   const allTips = await loadBlogIndex(blogRaw);
   const tips = allTips.some(a => a.categoria)
     ? allTips.filter(a => a.categoria === 'lezione' || a.categoria === 'nozione')
@@ -921,6 +922,19 @@ async function renderLezioni() {
         </section>
 
 
+        ${allievi.length ? `
+        <section class="lezioni-section allievi-section reveal">
+          <span class="section-label" data-it="I MIEI ALLIEVI SUL PALCO" data-en="MY STUDENTS ON STAGE">${state.lang === 'it' ? 'I MIEI ALLIEVI SUL PALCO' : 'MY STUDENTS ON STAGE'}</span>
+          <p class="allievi-intro" data-it="Dalla prima lezione al palco: ecco i miei allievi ai saggi di fine anno." data-en="From the first lesson to the stage: my students at their end-of-year recitals.">${state.lang === 'it' ? 'Dalla prima lezione al palco: ecco i miei allievi ai saggi di fine anno.' : 'From the first lesson to the stage: my students at their end-of-year recitals.'}</p>
+          <div class="lezioni-video-grid">
+            ${allievi.map(v => lezioneVideoHTML(v)).join('')}
+          </div>
+          <a href="/contatti" data-link="/contatti" class="btn-primary allievi-cta" data-it="PRENOTA UNA LEZIONE" data-en="BOOK A LESSON">
+            ${state.lang === 'it' ? 'PRENOTA UNA LEZIONE' : 'BOOK A LESSON'}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </section>` : ''}
+
         <section class="lezioni-section reveal">
           <span class="section-label" data-it="CONSIGLI SCRITTI" data-en="WRITTEN TIPS">${state.lang === 'it' ? 'CONSIGLI SCRITTI' : 'WRITTEN TIPS'}</span>
           <div class="news-grid">
@@ -966,6 +980,22 @@ function parseLezioniVideos(body) {
     });
   }
   return videos;
+}
+
+/**
+ * Video dei saggi degli allievi, in lezioni.md:
+ * - allievi: ID_VIDEO | Titolo IT | Descrizione IT | Titolo EN | Descrizione EN
+ */
+function parseAllieviVideos(body) {
+  const out = [];
+  for (const line of body.split('\n')) {
+    const m = line.match(/^[-*]\s+allievi:\s*(.+)$/i);
+    if (!m) continue;
+    const [id = '', titoloIt = '', descIt = '', titoloEn = '', descEn = ''] = m[1].split('|').map(p => p.trim());
+    if (!id || /\s/.test(id)) continue;
+    out.push({ id, titoloIt, descIt, titoloEn: titoloEn || titoloIt, descEn: descEn || descIt });
+  }
+  return out;
 }
 
 /** Rende cliccabili i link (https://...) scritti nella descrizione */

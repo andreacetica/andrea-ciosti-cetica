@@ -1625,3 +1625,7 @@ a.musica-video-badge:hover { transform: scale(1.05); }
 @media (max-width: 600px) {
   .logo-wordmark { height: 24px; }
 }
+
+/* Allievi sul palco */
+.allievi-intro { color: var(--grey3, #9a9a9a); margin: 0.5rem 0 1.5rem; max-width: 640px; }
+.allievi-cta { margin-top: 2rem; }
