@@ -23,6 +23,8 @@ citta: Arezzo, Italia
 instagram: https://www.instagram.com/andreaciosticetica_drummer/
 youtube: https://youtube.com/@andreaciosticetica
 spotify: https://open.spotify.com/artist/5GjTujdCOrZnZWFh38smdR
+facebook: https://www.facebook.com/AndreaCiostiCetica
+tiktok: https://www.tiktok.com/@andreaciosticetica
 
 # ── FOOTER ───────────────────────────────────────────────
 anno: 2026

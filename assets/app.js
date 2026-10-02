@@ -100,6 +100,10 @@ function applySettings(s) {
   setHref('#footer-instagram', s.instagram);
   setHref('#footer-youtube',  s.youtube);
   setHref('#footer-spotify',  s.spotify);
+  setHref('#nav-facebook',    s.facebook);
+  setHref('#nav-tiktok',      s.tiktok);
+  setHref('#footer-facebook', s.facebook);
+  setHref('#footer-tiktok',   s.tiktok);
   // Contatti footer
   if (s.email) {
     const emailLink = $('#footer-email-link');
