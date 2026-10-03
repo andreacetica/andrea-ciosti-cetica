@@ -24,4 +24,4 @@ seo_desc_en: Photos and moments from Andrea Ciosti Cetica's live shows.
 - assets/images/io_marimba.jpg | Marimba
 - assets/images/io_agnelli.jpg | Con Luca Agnelli
 - assets/images/io_collective.jpg | Drum Collective
-- assets/images/rai_1.png | Rai 1
+- assets/images/rai_1.jpg | Rai 1

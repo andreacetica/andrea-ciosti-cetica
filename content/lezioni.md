@@ -5,6 +5,8 @@
 # TITOLO DELLA PAGINA
 titolo_it: Didattica
 titolo_en: Lessons
+intro_it: Lezioni di batteria per bambini, ragazzi e adulti ad Arezzo e Castiglion Fiorentino: dalla prima lezione al palco del saggio.
+intro_en: Drum lessons for kids, teens and adults in Arezzo and Castiglion Fiorentino: from the very first lesson to the recital stage.
 seo_desc_it: Video lezioni, consigli pratici e il mio libro per imparare la batteria.
 seo_desc_en: Video lessons, practical tips and my book to learn drums.
 #

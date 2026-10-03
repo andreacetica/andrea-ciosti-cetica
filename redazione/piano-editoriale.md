@@ -71,3 +71,12 @@ English text (markdown)…
 (Qui sotto vengono annotati automaticamente: data — categoria — titolo — file)
 - 2026-10-01 — lezione — Il paradiddle: il rudimento che apre mille porte — content/articoli/il-paradiddle.md
 - 2026-10-01 — storia — Gene Krupa e "Sing, Sing, Sing": quando la batteria diventò protagonista — content/articoli/gene-krupa-sing-sing-sing.md
+
+## SEO (per farsi trovare su Google)
+
+- `titolo_it`: chiaro e con la parola che la gente cerca (es. "Il paradiddle: cos'è e come si studia").
+- `seo_desc_it` / `seo_desc_en`: massimo 155 caratteri, con la parola chiave all'inizio.
+- Nelle LEZIONI aggiungi, in chiusura, un link alla pagina lezioni: `[lezioni di batteria ad Arezzo e Castiglion Fiorentino](/lezioni/)`.
+- Quando è utile, collega un articolo a un altro già pubblicato con un link `/blog/nome-articolo/`.
+- Le pagine per Google (sitemap, pagine statiche, dati strutturati) si rigenerano DA SOLE a ogni `git commit`
+  grazie a `strumenti/genera-seo.py`. Non serve fare altro.

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /redazione/
+Disallow: /strumenti/
+
+Sitemap: https://andreaciosticetica.com/sitemap.xml

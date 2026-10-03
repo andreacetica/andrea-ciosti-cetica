@@ -122,15 +122,22 @@ function updateSEO({ title, description, slug, image } = {}) {
   const base = s.dominio || 'https://andreaciosticetica.com';
   const defaultImg = `${base}/assets/images/og-cover.jpg`;
 
-  const fullTitle = title
-    ? `${title} — Andrea Ciosti Cetica`
-    : (state.lang === 'it' ? s.seo_titolo_it : s.seo_titolo_en) || 'Andrea Ciosti Cetica — Drummer';
+  // Titoli e descrizioni SEO per pagina da settings.md (es. seo_lezioni_titolo_it)
+  const key = slug ? slug.split('/')[0] : '';
+  const isPage = slug && !slug.includes('/');
+  const ovTitle = isPage ? s[`seo_${key}_titolo_${state.lang}`] : '';
+  const ovDesc  = isPage ? s[`seo_${key}_desc_${state.lang}`]   : '';
 
-  const desc = description
+  const fullTitle = ovTitle
+    || (title ? `${title} — Andrea Ciosti Cetica`
+              : (state.lang === 'it' ? s.seo_titolo_it : s.seo_titolo_en) || 'Andrea Ciosti Cetica — Drummer');
+
+  const desc = ovDesc
+    || description
     || (state.lang === 'it' ? s.seo_desc_it : s.seo_desc_en)
     || 'Batterista, percussionista e sound lover. Passione, groove e ricerca sonora.';
 
-  const url  = slug ? `${base}/${slug}` : base;
+  const url  = slug ? `${base}/${slug}/` : `${base}/`;
   const img  = image ? `${base}/assets/images/${image}` : defaultImg;
 
   document.title = fullTitle;
@@ -166,7 +173,11 @@ const routes = {
 };
 
 function getPath() {
-  return window.location.pathname.replace(/\/$/, '') || '/';
+  // Normalizza: /bio/  /bio.html  /bio/index.html  ->  /bio
+  return window.location.pathname
+    .replace(/\/index\.html$/, '')
+    .replace(/\.html$/, '')
+    .replace(/\/$/, '') || '/';
 }
 
 async function navigate(path, push = true) {
@@ -262,7 +273,7 @@ async function renderHome() {
         <div class="hero-divider"></div>
         <p class="hero-desc" data-it="${hMeta.tagline_it || ''}" data-en="${hMeta.tagline_en || ''}">${state.lang === 'it' ? (hMeta.tagline_it || '') : (hMeta.tagline_en || '')}</p>
         <div class="hero-actions">
-          <a href="/bio" data-link="/bio" class="btn-primary" data-it="SCOPRI DI PIÙ" data-en="DISCOVER MORE">
+          <a href="/bio/" data-link="/bio" class="btn-primary" data-it="SCOPRI DI PIÙ" data-en="DISCOVER MORE">
             SCOPRI DI PIÙ
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -290,7 +301,7 @@ async function renderHome() {
           <span class="section-label">BIO</span>
           <h2 class="section-title" data-it="CHI SONO" data-en="ABOUT ME">${state.lang === 'it' ? 'CHI SONO' : 'ABOUT ME'}</h2>
           <div class="bio-short">${marked.parse(extractLang(hBody, state.lang).slice(0, 600))}</div>
-          <a href="/bio" data-link="/bio" class="btn-text" data-it="LEGGI DI PIÙ" data-en="READ MORE">
+          <a href="/bio/" data-link="/bio" class="btn-text" data-it="LEGGI DI PIÙ" data-en="READ MORE">
             ${state.lang === 'it' ? 'LEGGI DI PIÙ' : 'READ MORE'}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -321,7 +332,7 @@ async function renderHome() {
             <h2 class="section-title" data-it="ASCOLTA" data-en="LISTEN">${state.lang === 'it' ? 'ASCOLTA' : 'LISTEN'}</h2>
             <div class="spotify-wrap">${spotifyEmbedHTML(232)}</div>
             <br>
-            <a href="/musica" data-link="/musica" class="btn-text" data-it="VAI A TUTTA LA MUSICA" data-en="ALL MUSIC">
+            <a href="/musica/" data-link="/musica" class="btn-text" data-it="VAI A TUTTA LA MUSICA" data-en="ALL MUSIC">
               ${state.lang === 'it' ? 'VAI A TUTTA LA MUSICA' : 'ALL MUSIC'}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -339,7 +350,7 @@ async function renderHome() {
           ${newsArticles.slice(0, 3).map(a => newsCardHTML(a)).join('')}
         </div>
         <br><br>
-        <a href="/blog" data-link="/blog" class="btn-text reveal" data-it="TUTTE LE NEWS" data-en="ALL NEWS">
+        <a href="/blog/" data-link="/blog" class="btn-text reveal" data-it="TUTTE LE NEWS" data-en="ALL NEWS">
           ${state.lang === 'it' ? 'TUTTE LE NEWS' : 'ALL NEWS'}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -368,7 +379,7 @@ function renderDoors(articles, videos, s) {
         <span class="section-label reveal" data-it="DA DOVE VUOI INIZIARE?" data-en="WHERE DO YOU WANT TO START?">${t('DA DOVE VUOI INIZIARE?', 'WHERE DO YOU WANT TO START?')}</span>
         <div class="doors-grid">
 
-          <a class="door reveal" href="${lesson ? '/blog/' + lesson.slug : '/lezioni'}" data-link="${lesson ? '/blog/' + lesson.slug : '/lezioni'}">
+          <a class="door reveal" href="${lesson ? '/blog/' + lesson.slug + '/' : '/lezioni/'}" data-link="${lesson ? '/blog/' + lesson.slug : '/lezioni'}">
             <span class="door-num">01</span>
             <h3 class="door-q">${t('Vuoi imparare a suonare?', 'Want to learn to play?')}</h3>
             ${lesson ? `
@@ -379,14 +390,14 @@ function renderDoors(articles, videos, s) {
             <span class="door-cta">${lesson ? t('Leggi la lezione', 'Read the lesson') : t('Vai alla didattica', 'Go to lessons')} ${arrow}</span>
           </a>
 
-          <a class="door reveal" href="/contatti" data-link="/contatti">
+          <a class="door reveal" href="/contatti/" data-link="/contatti">
             <span class="door-num">02</span>
             <h3 class="door-q">${t('Cerchi un batterista?', 'Looking for a drummer?')}</h3>
             <p class="door-text">${t('Live, studio, orchestre e collaborazioni. Vuoi collaborare? Fammi una proposta!', 'Live shows, studio, orchestras and collaborations. Want to work together? Send me a proposal!')}</p>
             <span class="door-cta">${t('Scrivimi', 'Write to me')} ${arrow}</span>
           </a>
 
-          <a class="door reveal" href="/musica" data-link="/musica">
+          <a class="door reveal" href="/musica/" data-link="/musica">
             <span class="door-num">03</span>
             <h3 class="door-q">${t('Vuoi ascoltare?', 'Want to listen?')}</h3>
             ${video ? `
@@ -478,7 +489,7 @@ async function renderBio() {
         <h1 class="section-title reveal" data-it="${titleIt}" data-en="${titleEn}">${title}</h1>
         <div class="bio-page-grid">
           <div class="bio-page-img reveal">
-            ${meta.immagine ? `<img src="assets/images/${meta.immagine}" alt="${title}">` : placeholderImg('bio-portrait')}
+            ${meta.immagine ? `<img src="assets/images/${meta.immagine}" alt="Andrea Ciosti Cetica, batterista e percussionista">` : placeholderImg('bio-portrait')}
           </div>
           <div class="bio-page-content reveal">
             ${marked.parse(text)}
@@ -684,7 +695,7 @@ async function renderGallery() {
       <div class="gallery-page-inner">
           ${photos.map((p, i) => `
             <div class="gallery-page-item reveal" data-index="${i}" data-src="${p.src}">
-              ${p.src.startsWith('assets/') ? '<img src="' + p.src + '" alt="' + (p.alt || '') + '" loading="lazy" />' + (p.alt ? '<span class="gallery-caption">' + p.alt + '</span>' : '') : placeholderImg('gallery-' + i)}
+              ${p.src.startsWith('assets/') ? '<img src="' + p.src + '" alt="' + (p.alt ? p.alt + ' — Andrea Ciosti Cetica, batterista' : 'Andrea Ciosti Cetica, batterista') + '" loading="lazy" />' + (p.alt ? '<span class="gallery-caption">' + p.alt + '</span>' : '') : placeholderImg('gallery-' + i)}
             </div>
           `).join('')}
         </div>
@@ -814,7 +825,7 @@ async function renderArticle(slug) {
     <div class="page-enter">
       <div class="article-page">
         <div class="article-back">
-          <a href="/blog" data-link="/blog" class="btn-text" data-it="← TUTTI GLI ARTICOLI" data-en="← ALL ARTICLES">
+          <a href="/blog/" data-link="/blog" class="btn-text" data-it="← TUTTI GLI ARTICOLI" data-en="← ALL ARTICLES">
             ${state.lang === 'it' ? '← TUTTI GLI ARTICOLI' : '← ALL ARTICLES'}
           </a>
         </div>
@@ -880,6 +891,7 @@ async function renderLezioni() {
         <div class="page-hero-inner">
           <span class="section-label" data-it="DIDATTICA" data-en="LESSONS">DIDATTICA</span>
           <h1 class="page-hero-title" data-it="${titleIt}" data-en="${titleEn}">${title}</h1>
+          ${meta.intro_it ? `<p class="page-hero-sub" data-it="${meta.intro_it}" data-en="${meta.intro_en || meta.intro_it}">${state.lang === 'en' ? (meta.intro_en || meta.intro_it) : meta.intro_it}</p>` : ''}
         </div>
       </div>
 
@@ -933,7 +945,7 @@ async function renderLezioni() {
           <div class="lezioni-video-grid">
             ${allievi.map(v => lezioneVideoHTML(v)).join('')}
           </div>
-          <a href="/contatti" data-link="/contatti" class="btn-primary allievi-cta" data-it="PRENOTA UNA LEZIONE" data-en="BOOK A LESSON">
+          <a href="/contatti/" data-link="/contatti" class="btn-primary allievi-cta" data-it="PRENOTA UNA LEZIONE" data-en="BOOK A LESSON">
             ${state.lang === 'it' ? 'PRENOTA UNA LEZIONE' : 'BOOK A LESSON'}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -949,7 +961,7 @@ async function renderLezioni() {
           </div>
           ${tips.length ? `
           <br><br>
-          <a href="/blog" data-link="/blog" class="btn-text reveal" data-it="VEDI TUTTI I CONSIGLI" data-en="ALL TIPS">
+          <a href="/blog/" data-link="/blog" class="btn-text reveal" data-it="VEDI TUTTI I CONSIGLI" data-en="ALL TIPS">
             ${state.lang === 'it' ? 'VEDI TUTTI I CONSIGLI' : 'ALL TIPS'}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>` : ''}
@@ -1181,7 +1193,7 @@ function newsCardHTML(a) {
           ${a.data ? `<span class="news-card-date">${formatDate(a.data)}</span>` : ''}
           ${a.tag  ? `<span class="news-card-tag">${a.tag}</span>` : ''}
         </div>
-        <h3 class="news-card-title">${a.titolo}</h3>
+        <h3 class="news-card-title"><a href="/blog/${a.slug}/" onclick="event.preventDefault()" style="color:inherit;text-decoration:none">${a.titolo}</a></h3>
         <p class="news-card-excerpt">${a.excerpt}</p>
       </div>
     </div>

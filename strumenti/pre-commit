@@ -1,0 +1,9 @@
+#!/bin/sh
+# Rigenera in automatico le pagine SEO (sitemap, pagine per Google) a ogni git commit.
+# Se Python non c'è, il commit procede comunque senza bloccarsi.
+cd "$(git rev-parse --show-toplevel)" || exit 0
+if [ -f strumenti/genera-seo.py ] && python3 -c "import sys" >/dev/null 2>&1; then
+  python3 strumenti/genera-seo.py >/dev/null 2>&1 && \
+  git add index.html 404.html sitemap.xml robots.txt bio musica gallery lezioni blog contatti privacy cookie >/dev/null 2>&1
+fi
+exit 0
