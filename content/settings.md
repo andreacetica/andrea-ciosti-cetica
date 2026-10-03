@@ -41,7 +41,7 @@ seo_contatti_desc_en: Message me on WhatsApp or by email for drum lessons in Are
 # Città dove insegni (usate da Google per le ricerche locali), separate da virgola
 seo_citta_lezioni: Arezzo, Castiglion Fiorentino
 # Codice di verifica di Google Search Console (lo incolli qui quando te lo do)
-google_verifica:
+google_verifica: C8VmXqzkYiwFeHKgm_wGr2QXF-as3AID6y4lvJuCNS4
 og_immagine: og-cover.jpg
 
 # ── CONTATTI ─────────────────────────────────────────────
