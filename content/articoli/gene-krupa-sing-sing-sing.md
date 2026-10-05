@@ -11,6 +11,8 @@ seo_desc_en: The story of Gene Krupa, the first star drummer: from Chicago to "S
 
 Oggi ci sembra normale che il batterista abbia il suo momento sotto i riflettori: un assolo, un applauso, il pubblico che lo cerca con lo sguardo. Ma non è sempre stato così. Per molto tempo la batteria era "solo" il motore della band, qualcosa che si sentiva ma non si guardava. Poi è arrivato **Gene Krupa**.
 
+<figure class="article-figure portrait"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Gene_Krupa_crop.jpg/960px-Gene_Krupa_crop.jpg" alt="Gene Krupa, ritratto di William P. Gottlieb, 1946" loading="lazy"><figcaption>Gene Krupa al 400 Restaurant di New York, giugno 1946 circa. Foto di William P. Gottlieb, Library of Congress (pubblico dominio) – <a href="https://commons.wikimedia.org/wiki/File:Gene_Krupa_crop.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption></figure>
+
 ## Un ragazzo di Chicago
 
 Eugene Bertram Krupa nasce a Chicago il 15 gennaio 1909. A metà degli anni Venti suona già da professionista nella scena jazz della città, e nel 1927 registra i suoi primi dischi con la band di Red McKenzie e del chitarrista Eddie Condon. In quelle sedute di dicembre 1927 succede una cosa che oggi diamo per scontata: Krupa è tra i primi batteristi jazz a usare la **cassa** in una registrazione. Fino ad allora, per paura di "rovinare" i delicati sistemi di incisione, la cassa spesso restava fuori dallo studio.
@@ -26,6 +28,8 @@ Il 6 luglio 1937, a Hollywood, l'orchestra registra **"Sing, Sing, Sing"**, un b
 Il 16 gennaio 1938 Goodman porta il jazz alla **Carnegie Hall** di New York, il tempio della musica classica. È un concerto storico, e "Sing, Sing, Sing" si allunga fino a oltre dodici minuti, con gli assoli improvvisati. Krupa, con la sua energia e il suo modo spettacolare di suonare, è uno dei protagonisti della serata.
 
 Poco dopo lascia Goodman e fonda la sua orchestra. Il motivo, raccontano, è anche questo: Krupa voleva la batteria in primo piano, Goodman voleva che il centro della scena restasse il clarinetto.
+
+<figure class="article-figure wide"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Gene_Krupa%2C_Washington%2C_D.C.%2C_between_1938_and_1948_%28William_P._Gottlieb_13341%29.jpg/960px-Gene_Krupa%2C_Washington%2C_D.C.%2C_between_1938_and_1948_%28William_P._Gottlieb_13341%29.jpg" alt="Gene Krupa alla batteria con la sua orchestra a Washington" loading="lazy"><figcaption>Gene Krupa alla batteria con la sua orchestra, Washington D.C., tra il 1938 e il 1948. Foto di William P. Gottlieb, Library of Congress (pubblico dominio) – <a href="https://commons.wikimedia.org/wiki/File:Gene_Krupa,_Washington,_D.C.,_between_1938_and_1948_(William_P._Gottlieb_13341).jpg" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption></figure>
 
 ## Non solo uno showman
 
@@ -49,6 +53,8 @@ Da insegnante, quello che amo di Krupa è il suo messaggio: **la batteria è uno
 
 Today it feels normal for the drummer to have a moment in the spotlight: a solo, a round of applause, the audience looking for them on stage. But it wasn't always like that. For a long time the drums were "just" the engine of the band, something you heard but didn't watch. Then came **Gene Krupa**.
 
+<figure class="article-figure portrait"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Gene_Krupa_crop.jpg/960px-Gene_Krupa_crop.jpg" alt="Gene Krupa, portrait by William P. Gottlieb, 1946" loading="lazy"><figcaption>Gene Krupa at the 400 Restaurant, New York, around June 1946. Photo by William P. Gottlieb, Library of Congress (public domain) – <a href="https://commons.wikimedia.org/wiki/File:Gene_Krupa_crop.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption></figure>
+
 ## A kid from Chicago
 
 Eugene Bertram Krupa was born in Chicago on January 15, 1909. By the mid-1920s he was already playing professionally in the city's jazz scene, and in 1927 he made his first records with the band of Red McKenzie and guitarist Eddie Condon. In those December 1927 sessions something happened that we take for granted today: Krupa was among the first jazz drummers to use the **bass drum** on a recording. Until then, for fear of "ruining" the delicate recording equipment, the bass drum was often left out of the studio.
@@ -64,6 +70,8 @@ On July 6, 1937, in Hollywood, the orchestra recorded **"Sing, Sing, Sing"**, a 
 On January 16, 1938, Goodman brought jazz to New York's **Carnegie Hall**, the temple of classical music. It was a historic concert, and "Sing, Sing, Sing" stretched to over twelve minutes, with improvised solos. Krupa, with his energy and spectacular style, was one of the stars of the night.
 
 Shortly afterwards he left Goodman and started his own orchestra. Part of the reason, it is said, was this: Krupa wanted the drums up front, while Goodman wanted the clarinet to stay at the center of attention.
+
+<figure class="article-figure wide"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Gene_Krupa%2C_Washington%2C_D.C.%2C_between_1938_and_1948_%28William_P._Gottlieb_13341%29.jpg/960px-Gene_Krupa%2C_Washington%2C_D.C.%2C_between_1938_and_1948_%28William_P._Gottlieb_13341%29.jpg" alt="Gene Krupa at the drums with his orchestra in Washington" loading="lazy"><figcaption>Gene Krupa at the drums with his orchestra, Washington D.C., between 1938 and 1948. Photo by William P. Gottlieb, Library of Congress (public domain) – <a href="https://commons.wikimedia.org/wiki/File:Gene_Krupa,_Washington,_D.C.,_between_1938_and_1948_(William_P._Gottlieb_13341).jpg" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption></figure>
 
 ## More than a showman
 

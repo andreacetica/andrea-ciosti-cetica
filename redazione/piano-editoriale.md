@@ -1,15 +1,24 @@
 # PIANO EDITORIALE — sezione NEWS di andreaciosticetica.com
 
-Questo file guida l'articolo settimanale scritto in automatico.
+Questo file guida i due articoli settimanali (e i loro caroselli Instagram) scritti in automatico.
 Puoi modificarlo quando vuoi: aggiungere argomenti, cambiarne l'ordine, togliere quelli che non ti piacciono.
 
 ## Come funziona
 
-1. Ogni settimana viene scritto UN articolo, in italiano e in inglese, preso dalla "CODA ARGOMENTI" qui sotto (il primo non ancora fatto).
-2. L'articolo viene salvato come BOZZA in `content/articoli/` e aggiunto a `content/blog.md` e `content/news.md`.
-3. Le bozze si vedono SOLO in locale (Live Server, 127.0.0.1:5500/blog) con l'etichetta gialla "BOZZA". Online non compaiono.
-4. Per pubblicare: apri il file dell'articolo, cambia `stato: bozza` in `stato: pubblicato`, salva e fai git add / commit / push.
-5. Per scartarlo: lascialo in bozza, oppure metti `#` davanti alla sua riga in `content/blog.md` e `content/news.md`.
+Ogni venerdì (attività programmata, alle 18:22) vengono scritti DUE articoli, in italiano e in inglese:
+- uno dalla **CODA TECNICA** (categoria `lezione`, oppure `nozione` se è un argomento pratico come bacchette o accordatura);
+- uno dalla **CODA STORIE E CURIOSITÀ** (categoria `storia`, oppure `nozione` se è cultura/strumenti).
+
+Per ogni articolo:
+1. Il file viene creato in `content/articoli/` con `stato: pubblicato` e aggiunto a `content/blog.md` e `content/news.md`.
+   Online compare SOLO dopo il push: in VS Code fai `git add .` → `git commit -m "Articoli della settimana"` → `git push`.
+   (Prima puoi rileggerlo con Live Server su 127.0.0.1:5500/blog/NOME-ARTICOLO.)
+2. Viene creato il carosello Instagram in `social/caroselli/AAAA-MM-GG-NOME-ARTICOLO/`:
+   `slide-1.jpg … slide-N.jpg`, `storia-link.jpg` (storia con lo spazio per l'adesivo Link) e `didascalia.txt`.
+   Le immagini si generano con `python3 social/_motore/genera-carosello.py CARTELLA` a partire da `carosello.json`.
+3. Per scartare un articolo: metti `stato: bozza` nel file, oppure `#` davanti alla sua riga in `content/blog.md` e `content/news.md`.
+
+Puoi modificare le code quando vuoi: aggiungere, togliere o spostare argomenti.
 
 ## Linee guida per chi scrive
 
@@ -22,7 +31,7 @@ Puoi modificarlo quando vuoi: aggiungere argomenti, cambiarne l'ordine, togliere
 - Niente immagini prese dal web (diritti d'autore): l'articolo usa la copertina grafica automatica della sua categoria.
 - Niente citazioni lunghe da libri o interviste: al massimo una frase breve tra virgolette, con la fonte.
 - Inglese: traduzione naturale, non letterale.
-- Alternare le categorie: lezione → storia → nozione → lezione → storia → nozione …
+- Ogni settimana: un articolo dalla CODA TECNICA e uno dalla CODA STORIE E CURIOSITÀ.
 
 ## Formato del file (content/articoli/NOME-ARTICOLO.md)
 
@@ -33,7 +42,7 @@ titolo_it: Titolo in italiano
 titolo_en: Title in English
 data: AAAA-MM-GG
 categoria: lezione        (oppure: nozione, storia)
-stato: bozza
+stato: pubblicato
 seo_desc_it: Una frase di massimo 155 caratteri per Google.
 seo_desc_en: One sentence, max 155 characters, for Google.
 ---
@@ -45,26 +54,43 @@ Testo in italiano (markdown)…
 English text (markdown)…
 ```
 
-## CODA ARGOMENTI (dall'alto verso il basso)
+## CAROSELLI INSTAGRAM (uno per articolo)
 
-- [x] lezione | Il paradiddle: il rudimento che apre mille porte
-- [x] storia | Gene Krupa e l'assolo di "Sing, Sing, Sing": quando la batteria diventò protagonista
-- [ ] nozione | Com'è nata la batteria: dal "double drumming" al drum set moderno
+- Cartella: `social/caroselli/AAAA-MM-GG-SLUG/` con dentro `carosello.json`; poi lanciare
+  `python3 social/_motore/genera-carosello.py social/caroselli/AAAA-MM-GG-SLUG`.
+- Il formato di `carosello.json` è spiegato in cima a `social/_motore/genera-carosello.py`.
+- 5 slide (massimo 7): la prima `copertina`, l'ultima `finale`; in mezzo `testo`, `passi`, `schede` o `griglia`.
+- Colori automatici: `lezione` = fucsia, `storia`/`nozione` = azzurro.
+- Testi brevi: titoli massimo 3-4 parole per riga, testo di una slide massimo 35 parole.
+- Per le lezioni la slide `finale` è "ESERCIZIO DELLA SETTIMANA" con un esercizio concreto (bpm); per le storie "COSA IMPARIAMO".
+- `didascalia`: 3-5 righe + "👉 Scorri…" + "📖 L'articolo completo è sul sito: link in bio." + 8-12 hashtag (vedi redazione/linee-guida-contenuti.md).
+- Niente immagini prese dal web, solo grafica.
+
+## CODA TECNICA (dall'alto verso il basso)
+
 - [ ] lezione | Il metronomo non è un nemico: 5 esercizi per un tempo solido
-- [ ] storia | Buddy Rich: tecnica, velocità e carattere
-- [ ] nozione | Timpani, rullante, grancassa: le percussioni dell'orchestra spiegate semplici
 - [ ] lezione | Le ghost notes: il segreto dei groove che "respirano"
-- [ ] storia | Tony Williams: il ragazzo che rivoluzionò il jazz a 17 anni
 - [ ] nozione | Bacchette: legno, punta, peso — come scegliere quelle giuste
 - [ ] lezione | Il groove a sedicesimi: dal rock al funk in 4 passaggi
-- [ ] storia | Steve Gadd e il groove di "50 Ways to Leave Your Lover"
-- [ ] nozione | Le percussioni latine: congas, bongos, timbales e il ruolo della clave
 - [ ] lezione | L'indipendenza mani-piedi: esercizi graduali per principianti
-- [ ] storia | Evelyn Glennie: la percussionista che ascolta con tutto il corpo
 - [ ] nozione | Accordare la batteria: le basi per un suono che funziona
 - [ ] lezione | Il doppio colpo (double stroke roll): dal lento al veloce
+- [ ] lezione | Xilofono: le prime scale a due bacchette
+- [ ] lezione | Il flam: il rudimento che dà "spessore" al colpo
+- [ ] lezione | Leggere la batteria: le note sul pentagramma in 10 minuti
+
+## CODA STORIE E CURIOSITÀ (dall'alto verso il basso)
+
+- [ ] nozione | Com'è nata la batteria: dal "double drumming" al drum set moderno
+- [ ] storia | Buddy Rich: tecnica, velocità e carattere
+- [ ] nozione | Timpani, rullante, grancassa: le percussioni dell'orchestra spiegate semplici
+- [ ] storia | Tony Williams: il ragazzo che rivoluzionò il jazz a 17 anni
+- [ ] storia | Steve Gadd e il groove di "50 Ways to Leave Your Lover"
+- [ ] nozione | Le percussioni latine: congas, bongos, timbales e il ruolo della clave
+- [ ] storia | Evelyn Glennie: la percussionista che ascolta con tutto il corpo
 - [ ] storia | John Bonham e il suono di "When the Levee Breaks"
 - [ ] nozione | La marimba e il vibrafono: le percussioni che "cantano"
+- [ ] storia | Il "Funky Drummer" di Clyde Stubblefield: il groove più campionato della storia
 
 ## ARTICOLI GIÀ SCRITTI
 

@@ -1629,3 +1629,10 @@ a.musica-video-badge:hover { transform: scale(1.05); }
 /* Allievi sul palco */
 .allievi-intro { color: var(--grey3, #9a9a9a); margin: 0.5rem 0 1.5rem; max-width: 640px; }
 .allievi-cta { margin-top: 2rem; }
+
+/* Foto dentro gli articoli */
+.article-figure { margin: 2.5rem auto; }
+.article-figure img { width: 100%; height: auto; object-fit: initial; border-radius: var(--radius); filter: grayscale(20%); }
+.article-figure.portrait { max-width: 420px; }
+.article-figure figcaption { margin-top: .6rem; font-size: .8rem; line-height: 1.5; color: var(--grey3); text-align: center; }
+.article-figure figcaption a { color: inherit; border-bottom: 1px solid currentColor; }
