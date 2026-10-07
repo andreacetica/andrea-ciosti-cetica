@@ -19,6 +19,7 @@ Per ogni articolo:
 3. Per scartare un articolo: metti `stato: bozza` nel file, oppure `#` davanti alla sua riga in `content/blog.md` e `content/news.md`.
 
 Puoi modificare le code quando vuoi: aggiungere, togliere o spostare argomenti.
+Gli argomenti segnati (Facchin) vengono dal libro di Guido Facchin: per usarli leggi redazione/fonte-facchin.md (la sigla "(Facchin)" non va nel titolo dell'articolo).
 
 ## Linee guida per chi scrive
 
@@ -63,7 +64,7 @@ English text (markdown)…
 - Colori automatici: `lezione` = fucsia, `storia`/`nozione` = azzurro.
 - Testi brevi: titoli massimo 3-4 parole per riga, testo di una slide massimo 35 parole.
 - Per le lezioni la slide `finale` è "ESERCIZIO DELLA SETTIMANA" con un esercizio concreto (bpm); per le storie "COSA IMPARIAMO".
-- `didascalia`: 3-5 righe + "👉 Scorri…" + "📖 L'articolo completo è sul sito: link in bio." + 8-12 hashtag (vedi redazione/linee-guida-contenuti.md).
+- `didascalia`: 3-5 righe + "👉 Scorri…" + "📖 L'articolo completo è sul sito (link in bio): andreaciosticetica.com/blog/SLUG/" + ESATTAMENTE 5 hashtag (limite di Instagram) (vedi redazione/linee-guida-contenuti.md).
 - Niente immagini prese dal web, solo grafica.
 
 ## CODA TECNICA (dall'alto verso il basso)
@@ -78,6 +79,16 @@ English text (markdown)…
 - [ ] lezione | Xilofono: le prime scale a due bacchette
 - [ ] lezione | Il flam: il rudimento che dà "spessore" al colpo
 - [ ] lezione | Leggere la batteria: le note sul pentagramma in 10 minuti
+- [ ] lezione | Il triangolo non è uno strumento facile: presa, colpo e tremolo (Facchin)
+- [ ] lezione | Il tamburello a cornice italiano: le basi della tecnica (Facchin)
+- [ ] lezione | I piatti a due dell'orchestra: come si suona un colpo crash (Facchin)
+- [ ] lezione | Le castagnette: tecnica orchestrale e tecnica spagnola (Facchin)
+- [ ] lezione | Il piatto sospeso: zone di percussione, rullo e smorzamento (Facchin)
+- [ ] lezione | Il rullo sul rullante orchestrale: colpi doppi o rullo "pressato"? (Facchin)
+- [ ] lezione | Lo hi-hat: regolazione e tecniche di base (Facchin)
+- [ ] lezione | Le maracas: come si suonano davvero (Facchin)
+- [ ] lezione | Il guiro e lo shaker: il groove della mano sinistra latina (Facchin)
+- [ ] lezione | Timpani: prima lezione, colpo, rullo e intonazione (Facchin)
 
 ## CODA STORIE E CURIOSITÀ (dall'alto verso il basso)
 
@@ -91,6 +102,31 @@ English text (markdown)…
 - [ ] storia | John Bonham e il suono di "When the Levee Breaks"
 - [ ] nozione | La marimba e il vibrafono: le percussioni che "cantano"
 - [ ] storia | Il "Funky Drummer" di Clyde Stubblefield: il groove più campionato della storia
+- [ ] storia | Zildjian: la famiglia che fa piatti dal 1623 (Facchin)
+- [ ] nozione | Gong e tam-tam: non sono la stessa cosa (Facchin)
+- [ ] nozione | Il triangolo: dalle bande militari turche all'orchestra (Facchin)
+- [ ] storia | La musica dei giannizzeri: come i tamburi turchi conquistarono l'Europa (Facchin)
+- [ ] nozione | Le campane tubolari: dalle chiese al palco (Facchin)
+- [ ] nozione | Lo steel drum: il tamburo nato dai bidoni di Trinidad (Facchin)
+- [ ] nozione | La celesta e la Fata Confetto di Čajkovskij (Facchin)
+- [ ] nozione | Le campane tibetane: storia, materiali e suono (Facchin)
+- [ ] nozione | La tammorra e il tamburello: le percussioni del Sud Italia (Facchin)
+- [ ] nozione | Il talking drum: il tamburo che parla (Facchin)
+- [ ] nozione | Taiko: i grandi tamburi del Giappone (Facchin)
+- [ ] nozione | La tabla indiana: due tamburi, mille suoni (Facchin)
+- [ ] nozione | Il darbuka: il tamburo a calice del Medio Oriente (Facchin)
+- [ ] nozione | Il pandeiro brasiliano: un tamburello che vale un'orchestra (Facchin)
+- [ ] storia | Il tamburo di Basilea: la tradizione dei tamburini svizzeri (Facchin)
+- [ ] nozione | La grancassa: dalla banda all'orchestra al pedale jazz (Facchin)
+- [ ] nozione | I timpani: dalla cavalleria all'orchestra sinfonica (Facchin)
+- [ ] nozione | Lo xilofono: dalle origini africane e asiatiche al concerto (Facchin)
+- [ ] nozione | Il balafon: l'antenato africano della marimba (Facchin)
+- [ ] nozione | L'hang: lo strumento più giovane della famiglia (Facchin)
+- [ ] nozione | Il waterphone e la sega musicale: i suoni del cinema horror (Facchin)
+- [ ] nozione | Strumenti trovati: padelle, bidoni e freni d'auto in orchestra (Facchin)
+- [ ] nozione | La txalaparta basca: suonare in due su un'asse di legno (Facchin)
+- [ ] nozione | Il glockenspiel: i "campanelli" dell'orchestra (Facchin)
+- [ ] nozione | Claves, guiro, maracas: la famiglia delle percussioni latine piccole (Facchin)
 
 ## ARTICOLI GIÀ SCRITTI
 

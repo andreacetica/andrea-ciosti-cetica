@@ -83,7 +83,7 @@ English text…
 - **Didascalia:** una frase-gancio + 1 riga di contesto + hashtag.
 - **Testo a schermo:** massimo 6 parole.
 
-## 6. Hashtag (sceglierne 8–12)
+## 6. Hashtag (sceglierne ESATTAMENTE 5: Instagram non ne accetta di più)
 
 - **Generali:** #batteria #drums #drummer #batterista #percussioni #percussionist
 - **Didattica:** #lezionidibatteria #drumlesson #rudimenti #rullante #snaredrum
