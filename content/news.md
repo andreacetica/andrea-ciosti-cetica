@@ -21,3 +21,5 @@
 # - nuovo-progetto-2025   (articolo di esempio del modello, nascosto)
 - il-paradiddle
 - gene-krupa-sing-sing-sing
+- metronomo-esercizi
+- come-e-nata-la-batteria

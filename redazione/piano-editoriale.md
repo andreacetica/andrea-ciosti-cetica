@@ -69,7 +69,7 @@ English text (markdown)…
 
 ## CODA TECNICA (dall'alto verso il basso)
 
-- [ ] lezione | Il metronomo non è un nemico: 5 esercizi per un tempo solido
+- [x] lezione | Il metronomo non è un nemico: 5 esercizi per un tempo solido
 - [ ] lezione | Le ghost notes: il segreto dei groove che "respirano"
 - [ ] nozione | Bacchette: legno, punta, peso — come scegliere quelle giuste
 - [ ] lezione | Il groove a sedicesimi: dal rock al funk in 4 passaggi
@@ -89,10 +89,18 @@ English text (markdown)…
 - [ ] lezione | Le maracas: come si suonano davvero (Facchin)
 - [ ] lezione | Il guiro e lo shaker: il groove della mano sinistra latina (Facchin)
 - [ ] lezione | Timpani: prima lezione, colpo, rullo e intonazione (Facchin)
+- [ ] lezione | Il metodo Moeller: il colpo "a frusta" per accenti potenti e rilassati
+- [ ] lezione | Ride jazz e indipendenza: la mano sinistra libera sul rullante
+- [ ] lezione | Il drumming lineare: groove senza due colpi insieme
+- [ ] lezione | La coordinazione a 4 vie: braccia e gambe indipendenti
+- [ ] lezione | Il groove funky alla Garibaldi: sedicesimi, accenti e ghost notes
+- [ ] lezione | Groove con l'ostinato di piedi: il metodo "New Breed"
+- [ ] lezione | Il linguaggio dei rudimenti sul set: dai sedicesimi ai fill
+- [ ] lezione | Rudimenti applicati al groove: paradiddle e flam sul set
 
 ## CODA STORIE E CURIOSITÀ (dall'alto verso il basso)
 
-- [ ] nozione | Com'è nata la batteria: dal "double drumming" al drum set moderno
+- [x] nozione | Com'è nata la batteria: dal "double drumming" al drum set moderno
 - [ ] storia | Buddy Rich: tecnica, velocità e carattere
 - [ ] nozione | Timpani, rullante, grancassa: le percussioni dell'orchestra spiegate semplici
 - [ ] storia | Tony Williams: il ragazzo che rivoluzionò il jazz a 17 anni
@@ -127,12 +135,17 @@ English text (markdown)…
 - [ ] nozione | La txalaparta basca: suonare in due su un'asse di legno (Facchin)
 - [ ] nozione | Il glockenspiel: i "campanelli" dell'orchestra (Facchin)
 - [ ] nozione | Claves, guiro, maracas: la famiglia delle percussioni latine piccole (Facchin)
+- [ ] storia | Gary Chester: il batterista dei mille dischi e il suo metodo "The New Breed"
+- [ ] storia | Jim Chapin, il "re" della tecnica Moeller e del jazz indipendente
+- [ ] storia | David Garibaldi e il funk dei Tower of Power
 
 ## ARTICOLI GIÀ SCRITTI
 
 (Qui sotto vengono annotati automaticamente: data — categoria — titolo — file)
 - 2026-10-01 — lezione — Il paradiddle: il rudimento che apre mille porte — content/articoli/il-paradiddle.md
 - 2026-10-01 — storia — Gene Krupa e "Sing, Sing, Sing": quando la batteria diventò protagonista — content/articoli/gene-krupa-sing-sing-sing.md
+- 2026-10-09 — lezione — Il metronomo non è un nemico: 5 esercizi per un tempo solido — content/articoli/metronomo-esercizi.md
+- 2026-10-09 — nozione — Com'è nata la batteria: dal "double drumming" al drum set moderno — content/articoli/come-e-nata-la-batteria.md
 
 ## SEO (per farsi trovare su Google)
 
