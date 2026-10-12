@@ -159,6 +159,21 @@ function setMeta(attr, name, content, id) {
   el.content = content;
 }
 
+/* ── STATISTICHE (GoatCounter) ───────────────────────────────── */
+// Conta una visita a ogni cambio pagina. In locale (Live Server) non conta nulla.
+let ultimaPaginaContata = null;
+function contaVisita(path, tentativi = 0) {
+  if (['localhost', '127.0.0.1', ''].includes(location.hostname)) return;
+  if (tentativi === 0 && path === ultimaPaginaContata) return; // es. cambio lingua IT/EN
+  const gc = window.goatcounter;
+  if (gc && typeof gc.count === 'function') {
+    gc.count({ path: path === '/' ? '/' : path + '/' });
+    ultimaPaginaContata = path;
+    return;
+  }
+  // lo script si carica in background: riprova per qualche secondo
+  if (tentativi < 20) setTimeout(() => contaVisita(path, tentativi + 1), 250);
+}
 /* ── ROUTER ──────────────────────────────────────────────────── */
 const routes = {
   '/':          renderHome,
@@ -185,6 +200,7 @@ async function navigate(path, push = true) {
     history.pushState({}, '', path);
   }
   state.currentPath = path;
+  contaVisita(path);
   updateActiveNav(path);
   scrollTo({ top: 0, behavior: 'instant' });
 
