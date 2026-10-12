@@ -200,7 +200,6 @@ async function navigate(path, push = true) {
     history.pushState({}, '', path);
   }
   state.currentPath = path;
-  contaVisita(path);
   updateActiveNav(path);
   scrollTo({ top: 0, behavior: 'instant' });
 
@@ -213,6 +212,7 @@ async function navigate(path, push = true) {
     await renderArticle(slug);
     applyLang(state.lang);
     initReveal();
+    contaVisita(path);
     return;
   }
 
@@ -226,6 +226,7 @@ async function navigate(path, push = true) {
   applyLang(state.lang);
   initReveal();
   closeMobileMenu();
+  contaVisita(path);
 }
 
 function updateActiveNav(path) {
