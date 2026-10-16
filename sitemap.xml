@@ -27,8 +27,18 @@
   </url>
   <url>
     <loc>https://andreaciosticetica.com/blog/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://andreaciosticetica.com/blog/ghost-notes/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://andreaciosticetica.com/blog/buddy-rich/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://andreaciosticetica.com/blog/metronomo-esercizi/</loc>

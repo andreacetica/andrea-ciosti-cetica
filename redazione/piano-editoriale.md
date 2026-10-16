@@ -70,7 +70,7 @@ English text (markdown)…
 ## CODA TECNICA (dall'alto verso il basso)
 
 - [x] lezione | Il metronomo non è un nemico: 5 esercizi per un tempo solido
-- [ ] lezione | Le ghost notes: il segreto dei groove che "respirano"
+- [x] lezione | Le ghost notes: il segreto dei groove che "respirano"
 - [ ] nozione | Bacchette: legno, punta, peso — come scegliere quelle giuste
 - [ ] lezione | Il groove a sedicesimi: dal rock al funk in 4 passaggi
 - [ ] lezione | L'indipendenza mani-piedi: esercizi graduali per principianti
@@ -101,7 +101,7 @@ English text (markdown)…
 ## CODA STORIE E CURIOSITÀ (dall'alto verso il basso)
 
 - [x] nozione | Com'è nata la batteria: dal "double drumming" al drum set moderno
-- [ ] storia | Buddy Rich: tecnica, velocità e carattere
+- [x] storia | Buddy Rich: tecnica, velocità e carattere
 - [ ] nozione | Timpani, rullante, grancassa: le percussioni dell'orchestra spiegate semplici
 - [ ] storia | Tony Williams: il ragazzo che rivoluzionò il jazz a 17 anni
 - [ ] storia | Steve Gadd e il groove di "50 Ways to Leave Your Lover"
@@ -146,6 +146,8 @@ English text (markdown)…
 - 2026-10-01 — storia — Gene Krupa e "Sing, Sing, Sing": quando la batteria diventò protagonista — content/articoli/gene-krupa-sing-sing-sing.md
 - 2026-10-09 — lezione — Il metronomo non è un nemico: 5 esercizi per un tempo solido — content/articoli/metronomo-esercizi.md
 - 2026-10-09 — nozione — Com'è nata la batteria: dal "double drumming" al drum set moderno — content/articoli/come-e-nata-la-batteria.md
+- 2026-10-16 — lezione — Ghost notes: il segreto dei groove che "respirano" — content/articoli/ghost-notes.md
+- 2026-10-16 — storia — Buddy Rich: tecnica, velocità e carattere — content/articoli/buddy-rich.md
 
 ## SEO (per farsi trovare su Google)
 

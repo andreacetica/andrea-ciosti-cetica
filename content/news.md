@@ -23,3 +23,5 @@
 - gene-krupa-sing-sing-sing
 - metronomo-esercizi
 - come-e-nata-la-batteria
+- ghost-notes
+- buddy-rich
