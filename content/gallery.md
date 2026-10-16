@@ -32,7 +32,7 @@ seo_desc_en: Photos and moments from Andrea Ciosti Cetica's live shows.
 - assets/images/gal_live-band.jpg | Con Petra Magoni
 - assets/images/gal_backstage-incontro-2.jpg | Con Benny Greb
 - assets/images/gal_live-timpani.jpg | Teatro Arcobaleno, Roma
-- assets/images/gal_festival.jpg | Tour in America
+- assets/images/gal_festival.jpg | D'Tour Band con Nichelle Tilman Anderson (Joe Cocker)
 - assets/images/gal_live-congas.jpg | Con Pupo
 - assets/images/gal_selfie-backstage.jpg | Con Elena D'Amario
 - assets/images/gal_studio.jpg | In studio con Alfredo Golino
