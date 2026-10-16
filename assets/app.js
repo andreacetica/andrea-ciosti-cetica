@@ -1059,6 +1059,7 @@ async function renderContatti() {
   const email = s.email || 'andreacetica@gmail.com';
   const tel   = s.telefono || '+39 000 0000000';
   const citta = s.citta || 'Milano, Italia';
+  const recensioni = s.recensioni_google || 'https://g.page/r/CZYP-7l9ftloEBM/review';
 
   const it = state.lang === 'it';
   const waNumber = tel.replace(/[^0-9]/g, '');
@@ -1109,6 +1110,13 @@ async function renderContatti() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
               <div class="contact-item-text">${citta}</div>
+            </div>
+            <div class="contact-review reveal">
+              <p>${it ? 'Sei un mio allievo o hai suonato con me? Lasciami una recensione su Google: mi aiuta tantissimo.' : 'Are you one of my students or have we played together? Leave me a Google review: it helps a lot.'}</p>
+              <a class="contact-btn" href="${recensioni}" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span>${it ? 'Lascia una recensione su Google' : 'Leave a Google review'}</span>
+              </a>
             </div>
           </div>
         </div>

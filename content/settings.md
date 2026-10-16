@@ -48,6 +48,7 @@ og_immagine: og-cover.jpg
 email: andreacetica@gmail.com
 telefono: +39 347 1851955
 citta: Arezzo, Italia
+recensioni_google: https://g.page/r/CZYP-7l9ftloEBM/review
 
 # ── SOCIAL ───────────────────────────────────────────────
 instagram: https://www.instagram.com/andreaciosticetica_drummer/

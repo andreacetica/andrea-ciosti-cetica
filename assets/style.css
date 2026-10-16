@@ -1636,3 +1636,7 @@ a.musica-video-badge:hover { transform: scale(1.05); }
 .article-figure.portrait { max-width: 420px; }
 .article-figure figcaption { margin-top: .6rem; font-size: .8rem; line-height: 1.5; color: var(--grey3); text-align: center; }
 .article-figure figcaption a { color: inherit; border-bottom: 1px solid currentColor; }
+
+/* Recensioni Google (pagina Contatti) */
+.contact-review { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.12); display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.contact-review p { margin: 0; }

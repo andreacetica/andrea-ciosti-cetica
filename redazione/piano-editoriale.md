@@ -63,9 +63,14 @@ English text (markdown)…
 - 5 slide (massimo 7): la prima `copertina`, l'ultima `finale`; in mezzo `testo`, `passi`, `schede` o `griglia`.
 - Colori automatici: `lezione` = fucsia, `storia`/`nozione` = azzurro.
 - Testi brevi: titoli massimo 3-4 parole per riga, testo di una slide massimo 35 parole.
-- Per le lezioni la slide `finale` è "ESERCIZIO DELLA SETTIMANA" con un esercizio concreto (bpm); per le storie "COSA IMPARIAMO".
+- NON MISCHIARE: il carosello della LEZIONE è solo tecnico (la slide `finale` è "ESERCIZIO DELLA SETTIMANA" con un esercizio concreto e i bpm);
+  il carosello di STORIA/NOZIONE è solo racconto e fatti verificati (date, persone, dischi, strumenti): niente esercizi, bpm, diteggiature o consigli tecnici,
+  nemmeno nella slide `finale`, che chiude la storia (es. l'ultima tappa o "COSA CI LASCIA"). L'esercizio resta solo nell'articolo.
 - `didascalia`: 3-5 righe + "👉 Scorri…" + "📖 L'articolo completo è sul sito (link in bio): andreaciosticetica.com/blog/SLUG/" + ESATTAMENTE 5 hashtag (limite di Instagram) (vedi redazione/linee-guida-contenuti.md).
 - Niente immagini prese dal web, solo grafica.
+- In fondo a `didascalia.txt` ci devono essere SEMPRE i link per l'adesivo Link della storia (li aggiunge da solo `genera-carosello.py`):
+  `https://andreaciosticetica.com/blog/SLUG/?utm_source=instagram&utm_campaign=storie` (e la versione `utm_source=facebook`),
+  sotto la riga "DA QUI IN GIÙ NON COPIARE NELLA DIDASCALIA".
 
 ## CODA TECNICA (dall'alto verso il basso)
 
