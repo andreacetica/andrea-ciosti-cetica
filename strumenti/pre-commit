@@ -4,6 +4,6 @@
 cd "$(git rev-parse --show-toplevel)" || exit 0
 if [ -f strumenti/genera-seo.py ] && python3 -c "import sys" >/dev/null 2>&1; then
   python3 strumenti/genera-seo.py >/dev/null 2>&1 && \
-  git add index.html 404.html sitemap.xml robots.txt bio musica gallery lezioni blog contatti privacy cookie >/dev/null 2>&1
+  git add index.html 404.html sitemap.xml robots.txt bio musica gallery lezioni attrezzatura blog contatti privacy cookie >/dev/null 2>&1
 fi
 exit 0

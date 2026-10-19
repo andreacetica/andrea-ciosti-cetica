@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://andreaciosticetica.com/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -24,6 +24,11 @@
     <loc>https://andreaciosticetica.com/lezioni/</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://andreaciosticetica.com/attrezzatura/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://andreaciosticetica.com/blog/</loc>
@@ -62,7 +67,7 @@
   </url>
   <url>
     <loc>https://andreaciosticetica.com/contatti/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>

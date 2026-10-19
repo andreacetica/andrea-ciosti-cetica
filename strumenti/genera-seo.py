@@ -258,7 +258,8 @@ def head(slug, title, desc, graph, og_type='website', image=None, noindex=False)
 
 
 NAV = [('Home', ''), ('Bio', 'bio'), ('Musica', 'musica'), ('Gallery', 'gallery'),
-       ('Lezioni di batteria', 'lezioni'), ('News', 'blog'), ('Contatti', 'contatti')]
+       ('Lezioni di batteria', 'lezioni'), ('Attrezzatura', 'attrezzatura'), ('News', 'blog'),
+       ('Contatti', 'contatti')]
 
 
 def static(h1, inner, intro=''):
@@ -409,6 +410,32 @@ def build():
     pages.append(('lezioni/index.html', head('lezioni', title, desc, g),
                   static(f'Lezioni di batteria {cities}', inner),
                   ('lezioni', mtime('content/lezioni.md'), '0.9')))
+
+    # ATTREZZATURA (link affiliati Amazon: solo i prodotti con un link vero)
+    m, b = frontmatter(read('content/attrezzatura.md'))
+    if m:
+        title, desc = seo('attrezzatura', f'La mia attrezzatura — {NAME}', m.get('seo_desc_it', ''))
+        inner = f'<p>{esc(m["intro_it"])}</p>' if m.get('intro_it') else ''
+        inner += f'<p><em>{esc(m.get("avviso_it", "In qualità di Affiliato Amazon io ricevo un guadagno dagli acquisti idonei."))}</em></p>'
+        group, items = None, []
+        for it in list_items(b):
+            if it.lower().startswith('categoria:'):
+                if group and items:
+                    inner += f'<h2>{esc(group)}</h2><ul>{"".join(items)}</ul>'
+                group, items = it.split(':', 1)[1].split('|')[0].strip(), []
+                continue
+            p = [x.strip() for x in it.split('|')]
+            if len(p) >= 2 and p[1].startswith('http'):
+                items.append(f'<li><a href="{esc(p[1])}" rel="sponsored nofollow">{esc(p[0])}</a>'
+                             + (f' — {esc(p[2])}' if len(p) > 2 and p[2] else '') + '</li>')
+        if group and items:
+            inner += f'<h2>{esc(group)}</h2><ul>{"".join(items)}</ul>'
+        inner += '<p><a href="/lezioni/">Lezioni di batteria</a></p>'
+        g = base_graph + [webpage('attrezzatura', title, desc),
+                          breadcrumb([('Home', page_url('')), ('Attrezzatura', page_url('attrezzatura'))])]
+        pages.append(('attrezzatura/index.html', head('attrezzatura', title, desc, g),
+                      static(m.get('titolo_it', 'La mia attrezzatura'), inner),
+                      ('attrezzatura', mtime('content/attrezzatura.md'), '0.6')))
 
     # BLOG (indice)
     title, desc = seo('blog', f'News — {NAME}', '')

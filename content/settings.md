@@ -30,6 +30,10 @@ seo_lezioni_titolo_it: Lezioni di batteria ad Arezzo e Castiglion Fiorentino | A
 seo_lezioni_titolo_en: Drum lessons in Arezzo and Castiglion Fiorentino | Andrea Ciosti Cetica
 seo_lezioni_desc_it: Lezioni di batteria per bambini e adulti ad Arezzo e Castiglion Fiorentino. Video lezioni gratuite, il metodo «Suona la Batteria» e i saggi degli allievi.
 seo_lezioni_desc_en: Drum lessons for kids and adults in Arezzo and Castiglion Fiorentino, Tuscany. Free video lessons, the «Play the Drum Set!» method and student recitals.
+seo_attrezzatura_titolo_it: La mia attrezzatura — Bacchette, pad e accessori | Andrea Ciosti Cetica
+seo_attrezzatura_titolo_en: My gear — Sticks, pads and accessories | Andrea Ciosti Cetica
+seo_attrezzatura_desc_it: Bacchette, pad, metodi e accessori che il batterista Andrea Ciosti Cetica usa e consiglia ai suoi allievi di batteria.
+seo_attrezzatura_desc_en: Sticks, practice pads, method books and accessories that drummer Andrea Ciosti Cetica uses and recommends to his drum students.
 seo_blog_titolo_it: News — Lezioni, rudimenti e storia della batteria | Andrea Ciosti Cetica
 seo_blog_titolo_en: News — Drum lessons, rudiments and drum history | Andrea Ciosti Cetica
 seo_blog_desc_it: Articoli su tecnica, rudimenti e storia della batteria con esercizi pratici, a cura del batterista e insegnante Andrea Ciosti Cetica.

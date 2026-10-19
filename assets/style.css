@@ -1640,3 +1640,52 @@ a.musica-video-badge:hover { transform: scale(1.05); }
 /* Recensioni Google (pagina Contatti) */
 .contact-review { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.12); display: flex; flex-direction: column; align-items: center; gap: 1rem; }
 .contact-review p { margin: 0; }
+
+/* ── ATTREZZATURA (link affiliati Amazon) ────────────────────── */
+.gear-disclosure {
+  margin: 0 0 3.5rem;
+  padding: 0.9rem 1.2rem;
+  border-left: 2px solid var(--accent);
+  background: var(--black2);
+  font-family: var(--font-mono);
+  font-size: 0.72rem; letter-spacing: 0.04em; line-height: 1.7;
+  color: var(--white2);
+}
+.gear-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.gear-card {
+  display: flex; flex-direction: column;
+  background: var(--black2);
+  border: 1px solid var(--grey);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color var(--transition), transform var(--transition);
+}
+.gear-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.gear-card-img { aspect-ratio: 4/3; background: var(--grey); overflow: hidden; }
+.gear-card-num {
+  padding: 1.5rem 1.5rem 0;
+  font-family: var(--font-display);
+  font-size: 2.4rem; line-height: 1; letter-spacing: 0.04em;
+  color: var(--accent);
+}
+.gear-card-body {
+  position: relative;
+  display: flex; flex-direction: column; flex: 1;
+  padding: 1rem 1.5rem 1.5rem;
+}
+.gear-card-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem; letter-spacing: 0.04em; line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+.gear-card-desc { font-size: 0.88rem; color: var(--grey3); line-height: 1.7; margin-bottom: 1.25rem; }
+.gear-link { margin-top: auto; }
+.gear-missing { position: static; align-self: flex-start; margin-bottom: 0.75rem; }
+.gear-teaser .btn-primary { margin-top: 0.5rem; }
+@media (max-width: 900px) { .gear-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .gear-grid { grid-template-columns: 1fr; } }

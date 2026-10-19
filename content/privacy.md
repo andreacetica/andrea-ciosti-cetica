@@ -19,7 +19,11 @@ Quando visiti il sito, alcuni servizi tecnici ricevono in automatico dati come l
 - **Google Fonts** (Google), che fornisce i caratteri tipografici del sito;
 - **jsDelivr**, che fornisce una piccola libreria tecnica usata per mostrare i testi.
 
-Il sito **non usa** strumenti di statistica, profilazione o pubblicità.
+Per contare le visite il sito usa **GoatCounter**, un servizio di statistica che non usa cookie e non traccia i singoli visitatori. Il sito **non usa** strumenti di profilazione.
+
+## Link di affiliazione Amazon
+
+La pagina «La mia attrezzatura» contiene link di affiliazione al programma **Amazon Affiliati**: in qualità di Affiliato Amazon io ricevo un guadagno dagli acquisti idonei. Questo sito non installa cookie: se clicchi uno di questi link arrivi su Amazon, che può usare i propri cookie per registrare l'acquisto secondo la sua [informativa sulla privacy](https://www.amazon.it/gp/help/customer/display.html?nodeId=201909010).
 
 ## Contenuti incorporati
 
@@ -50,7 +54,11 @@ When you visit the site, some technical services automatically receive data such
 - **Google Fonts** (Google), which provides the site's typefaces;
 - **jsDelivr**, which provides a small technical library used to display text.
 
-The site **does not use** analytics, profiling or advertising tools.
+To count visits the site uses **GoatCounter**, an analytics service that uses no cookies and does not track individual visitors. The site **does not use** profiling tools.
+
+## Amazon affiliate links
+
+The "My gear" page contains affiliate links to the **Amazon Associates** programme: as an Amazon Associate I earn from qualifying purchases. This site sets no cookies: if you click one of these links you land on Amazon, which may use its own cookies to record the purchase under its [privacy notice](https://www.amazon.it/gp/help/customer/display.html?nodeId=201909010).
 
 ## Embedded content
 

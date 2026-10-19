@@ -183,6 +183,7 @@ const routes = {
   '/blog':      renderBlog,
   '/lezioni':   renderLezioni,
   '/contatti':  renderContatti,
+  '/attrezzatura': renderAttrezzatura,
   '/privacy':   renderPrivacy,
   '/cookie':    renderCookie,
 };
@@ -984,6 +985,15 @@ async function renderLezioni() {
           </a>` : ''}
         </section>
 
+        <section class="lezioni-section gear-teaser reveal">
+          <span class="section-label" data-it="LA MIA ATTREZZATURA" data-en="MY GEAR">${state.lang === 'it' ? 'LA MIA ATTREZZATURA' : 'MY GEAR'}</span>
+          <p class="allievi-intro" data-it="Bacchette, pad e metodi: tutto quello che consiglio ai miei allievi per studiare a casa." data-en="Sticks, pads and method books: everything I recommend to my students for practising at home.">${state.lang === 'it' ? 'Bacchette, pad e metodi: tutto quello che consiglio ai miei allievi per studiare a casa.' : 'Sticks, pads and method books: everything I recommend to my students for practising at home.'}</p>
+          <a href="/attrezzatura/" data-link="/attrezzatura" class="btn-primary" data-it="VEDI L'ATTREZZATURA" data-en="SEE MY GEAR">
+            ${state.lang === 'it' ? "VEDI L'ATTREZZATURA" : 'SEE MY GEAR'}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </section>
+
       </div>
     </div>
   `;
@@ -1052,6 +1062,116 @@ function lezioneVideoHTML(v) {
     </div>
   `;
 }
+
+/* ── ATTREZZATURA (link affiliati Amazon) ────────────────────── */
+/**
+ * Formato in attrezzatura.md:
+ * - categoria: Nome IT | Nome EN
+ * - Nome prodotto | link | Perché IT | Why EN | foto (facoltativa)
+ * I prodotti senza link (INCOLLA_LINK) si vedono solo in locale.
+ */
+function parseAttrezzatura(body) {
+  const gruppi = [];
+  let corrente = null;
+  for (const line of body.split('\n')) {
+    const m = line.match(/^[-*]\s+(.+)$/);
+    if (!m) continue;
+    const cat = m[1].match(/^categoria:\s*(.+)$/i);
+    if (cat) {
+      const [it = '', en = ''] = cat[1].split('|').map(p => p.trim());
+      corrente = { it, en: en || it, items: [] };
+      gruppi.push(corrente);
+      continue;
+    }
+    const [nome = '', link = '', perche_it = '', perche_en = '', foto = ''] = m[1].split('|').map(p => p.trim());
+    if (!nome) continue;
+    const ok = /^https?:\/\//.test(link);
+    if (!ok && !IS_LOCAL) continue;
+    if (!corrente) { corrente = { it: 'Attrezzatura', en: 'Gear', items: [] }; gruppi.push(corrente); }
+    corrente.items.push({ nome, link: ok ? link : '', perche_it, perche_en: perche_en || perche_it, foto });
+  }
+  return gruppi.filter(g => g.items.length);
+}
+
+function gearCardHTML(p, i) {
+  const perche = state.lang === 'en' ? p.perche_en : p.perche_it;
+  const img = p.foto ? (/^https?:\/\//.test(p.foto) ? p.foto : `assets/images/${p.foto}`) : '';
+  const btn = state.lang === 'it' ? 'VEDI SU AMAZON' : 'VIEW ON AMAZON';
+  return `
+    <article class="gear-card reveal">
+      ${img ? `<div class="gear-card-img"><img src="${img}" alt="${p.nome}" loading="lazy" /></div>` : `<div class="gear-card-num">${String(i + 1).padStart(2, '0')}</div>`}
+      <div class="gear-card-body">
+        ${!p.link ? '<span class="bozza-badge gear-missing">MANCA IL LINK</span>' : ''}
+        <h3 class="gear-card-title">${p.nome}</h3>
+        ${perche ? `<p class="gear-card-desc">${perche}</p>` : ''}
+        ${p.link ? `
+        <a href="${p.link}" target="_blank" rel="sponsored nofollow noopener" class="btn-text gear-link" data-gear="${p.nome}" data-it="VEDI SU AMAZON" data-en="VIEW ON AMAZON">
+          ${btn}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>` : ''}
+      </div>
+    </article>`;
+}
+
+async function renderAttrezzatura() {
+  const raw = await fetchText('content/attrezzatura.md').catch(() => '');
+  const { meta, body } = parseFrontmatter(raw);
+  const gruppi = parseAttrezzatura(body);
+  const L = (k) => state.lang === 'en' ? (meta[k + '_en'] || meta[k + '_it'] || '') : (meta[k + '_it'] || '');
+  const titleIt = meta.titolo_it || 'La mia attrezzatura';
+  const titleEn = meta.titolo_en || 'My gear';
+  const title = state.lang === 'it' ? titleIt : titleEn;
+  const avvisoIt = meta.avviso_it || 'In qualità di Affiliato Amazon io ricevo un guadagno dagli acquisti idonei.';
+  const avvisoEn = meta.avviso_en || 'As an Amazon Associate I earn from qualifying purchases.';
+
+  updateSEO({ title, description: L('seo_desc'), slug: 'attrezzatura' });
+
+  let n = 0;
+  $('#app').innerHTML = `
+    <div class="lezioni-page gear-page page-enter">
+      <div class="page-hero">
+        <div class="page-hero-inner">
+          <span class="section-label" data-it="ATTREZZATURA" data-en="GEAR">${state.lang === 'it' ? 'ATTREZZATURA' : 'GEAR'}</span>
+          <h1 class="page-hero-title" data-it="${titleIt}" data-en="${titleEn}">${title}</h1>
+          ${meta.intro_it ? `<p class="page-hero-sub" data-it="${meta.intro_it}" data-en="${meta.intro_en || meta.intro_it}">${L('intro')}</p>` : ''}
+        </div>
+      </div>
+
+      <div class="lezioni-inner">
+        <p class="gear-disclosure" data-it="${avvisoIt}" data-en="${avvisoEn}">${state.lang === 'it' ? avvisoIt : avvisoEn}</p>
+
+        ${gruppi.length ? gruppi.map(g => `
+        <section class="lezioni-section reveal">
+          <span class="section-label">${state.lang === 'it' ? g.it.toUpperCase() : g.en.toUpperCase()}</span>
+          <div class="gear-grid">
+            ${g.items.map(p => gearCardHTML(p, n++)).join('')}
+          </div>
+        </section>`).join('') : `
+        <p style="color:var(--grey3)" data-it="Lista in arrivo." data-en="List coming soon.">${state.lang === 'it' ? 'Lista in arrivo.' : 'List coming soon.'}</p>`}
+
+        <section class="lezioni-section reveal">
+          <span class="section-label" data-it="HAI DUBBI?" data-en="NOT SURE?">${state.lang === 'it' ? 'HAI DUBBI?' : 'NOT SURE?'}</span>
+          <p class="allievi-intro" data-it="Se sei un mio allievo chiedimi a lezione: ti dico cosa serve davvero per il tuo livello, prima di comprare." data-en="If you are one of my students, ask me in class: I'll tell you what you really need for your level before you buy.">${state.lang === 'it' ? 'Se sei un mio allievo chiedimi a lezione: ti dico cosa serve davvero per il tuo livello, prima di comprare.' : "If you are one of my students, ask me in class: I'll tell you what you really need for your level before you buy."}</p>
+          <a href="/lezioni/" data-link="/lezioni" class="btn-primary" data-it="TORNA ALLA DIDATTICA" data-en="BACK TO LESSONS">
+            ${state.lang === 'it' ? 'TORNA ALLA DIDATTICA' : 'BACK TO LESSONS'}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </section>
+      </div>
+    </div>
+  `;
+  pageEnter();
+}
+
+// Conta i clic sui link Amazon come "eventi" in GoatCounter (es. amazon: Vic Firth 5A)
+document.addEventListener('click', e => {
+  const a = e.target.closest('a.gear-link');
+  if (!a || IS_LOCAL) return;
+  const gc = window.goatcounter;
+  if (gc && typeof gc.count === 'function') {
+    gc.count({ path: 'amazon-' + (a.dataset.gear || 'link').toLowerCase().replace(/[^a-z0-9]+/g, '-'), title: 'Amazon: ' + (a.dataset.gear || ''), event: true });
+  }
+});
 
 /* ── CONTATTI ────────────────────────────────────────────────── */
 async function renderContatti() {
