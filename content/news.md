@@ -25,5 +25,5 @@
 - come-e-nata-la-batteria
 - ghost-notes
 - buddy-rich
-- bacchette-batteria
+- groove-sedicesimi
 - percussioni-orchestra
