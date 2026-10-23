@@ -32,8 +32,18 @@
   </url>
   <url>
     <loc>https://andreaciosticetica.com/blog/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://andreaciosticetica.com/blog/bacchette-batteria/</loc>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://andreaciosticetica.com/blog/percussioni-orchestra/</loc>
+    <lastmod>2026-10-23</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://andreaciosticetica.com/blog/ghost-notes/</loc>

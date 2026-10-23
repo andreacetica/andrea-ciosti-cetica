@@ -22,3 +22,5 @@
 - come-e-nata-la-batteria
 - ghost-notes
 - buddy-rich
+- bacchette-batteria
+- percussioni-orchestra
