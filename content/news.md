@@ -27,3 +27,5 @@
 - buddy-rich
 - groove-sedicesimi
 - percussioni-orchestra
+- indipendenza-mani-piedi
+- bacchette-batteria

@@ -2,9 +2,9 @@
 slug: bacchette-batteria
 titolo_it: Bacchette per batteria: legno, punta, peso e come scegliere quelle giuste
 titolo_en: Drumsticks explained: wood, tip, weight and how to choose the right pair
-data: 2026-10-23
+data: 2026-10-30
 categoria: nozione
-stato: bozza
+stato: pubblicato
 seo_desc_it: Bacchette per batteria: cosa vogliono dire 7A, 5A, 5B e 2B, che differenza c'è tra hickory, acero e quercia, punta in legno o nylon. Guida semplice.
 seo_desc_en: Drumsticks explained: what 7A, 5A, 5B and 2B mean, hickory vs maple vs oak, wood or nylon tip. A simple guide to choosing the right pair.
 ---
