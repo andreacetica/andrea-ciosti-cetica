@@ -24,6 +24,9 @@ File di riferimento per creare contenuti per il sito (andreaciosticetica.com) e 
 - Si può citare un libro come consiglio di lettura (titolo, autore, perché lo consiglio), al massimo con una frase breve tra virgolette.
 - I miei libri ("Suona la Batteria" e il libro dei rudimenti) si possono usare liberamente.
 - Storia e nozioni vanno verificate su fonti affidabili, citate in fondo agli articoli. Un dato che non si può verificare non si scrive.
+- **Mai scrivere cose non certe.** Se le fonti non sono d'accordo su un fatto (date, origini, significati, percentuali), quel fatto NON si scrive: né nell'articolo, né nel carosello, né nella didascalia. Niente "si dice che" o "secondo la tradizione": si toglie e basta.
+- **Fonte più autorevole: Guido Facchin, *Le percussioni*.** Se Facchin e un sito web dicono cose diverse, vale Facchin.
+- **Argomenti curiosi e originali.** Niente temi generici da manuale ("le basi di...", "come scegliere...") se non hanno un taglio insolito. Ogni articolo deve avere un aggancio che incuriosisce: un fatto poco noto, una storia sorprendente, un punto di vista diverso. Se il primo argomento in coda è generico, va riformulato con un taglio curioso (sempre con fatti certi) prima di scriverlo.
 
 ## 4. Stile grafico (per caroselli e copertine)
 

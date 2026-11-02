@@ -74,12 +74,13 @@ English text (markdown)…
   sotto la riga "DA QUI IN GIÙ NON COPIARE NELLA DIDASCALIA".
 
 ## CODA TECNICA (dall'alto verso il basso)
+(Regola: argomenti curiosi e originali. Se il primo della coda è generico, riformularlo con un taglio curioso prima di scriverlo. Vedi linee-guida-contenuti.md.)
 
 - [x] lezione | Il metronomo non è un nemico: 5 esercizi per un tempo solido
 - [x] lezione | Le ghost notes: il segreto dei groove che "respirano"
 - [x] lezione | Il groove a sedicesimi: dal rock al funk in 4 passaggi
 - [x] lezione | L'indipendenza mani-piedi: esercizi graduali per principianti
-- [ ] lezione | Il doppio colpo (double stroke roll): dal lento al veloce
+- [ ] lezione | Accordare la batteria: le basi per un suono che funziona
 - [ ] lezione | Xilofono: le prime scale a due bacchette
 - [ ] lezione | Il flam: il rudimento che dà "spessore" al colpo
 - [ ] lezione | Leggere la batteria: le note sul pentagramma in 10 minuti
@@ -108,7 +109,6 @@ English text (markdown)…
 - [x] storia | Buddy Rich: tecnica, velocità e carattere
 - [x] nozione | Timpani, rullante, grancassa: le percussioni dell'orchestra spiegate semplici
 - [x] nozione | Bacchette: legno, punta, peso — come scegliere quelle giuste
-- [ ] nozione | Accordare la batteria: le basi per un suono che funziona
 - [ ] storia | Tony Williams: il ragazzo che rivoluzionò il jazz a 17 anni
 - [ ] storia | Steve Gadd e il groove di "50 Ways to Leave Your Lover"
 - [ ] nozione | Le percussioni latine: congas, bongos, timbales e il ruolo della clave
@@ -157,7 +157,7 @@ English text (markdown)…
 - 2026-10-23 — lezione — Il groove a sedicesimi: dal rock al funk in 4 passaggi — content/articoli/groove-sedicesimi.md
 - 2026-10-23 — nozione — Timpani, rullante, grancassa: le percussioni dell'orchestra spiegate semplici — content/articoli/percussioni-orchestra.md
 - 2026-10-30 — lezione — Indipendenza mani-piedi alla batteria: esercizi graduali per principianti — content/articoli/indipendenza-mani-piedi.md
-- 2026-10-30 — nozione — Bacchette per batteria: legno, punta, peso e come scegliere quelle giuste — content/articoli/bacchette-batteria.md
+- 2026-10-30 — nozione — Le storie dietro le tue bacchette: un timpanista, un batterista di Niagara Falls e le sigle 5A e 7A — content/articoli/bacchette-batteria.md
 
 ## SEO (per farsi trovare su Google)
 

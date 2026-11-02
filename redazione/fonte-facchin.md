@@ -7,6 +7,7 @@ Andrea ne possiede una copia (PDF personale, NON va messo in questa cartella né
 - È una fonte di TEMI e di orientamento: gli argomenti delle code nel piano editoriale segnati con (Facchin) vengono da qui.
 - Non copiare testi, tabelle, esempi musicali o immagini del libro. Scrivere sempre con parole proprie.
 - I fatti (date, nomi, luoghi) vanno verificati sul web su almeno due fonti, come per ogni articolo.
+- È la fonte PIÙ AUTOREVOLE: se un sito web dice una cosa diversa da Facchin, vale Facchin.
 - Si può citare il libro in "## Fonti" come lettura consigliata: Guido Facchin, *Le percussioni*, Zecchini Editore, 2014.
 
 ## Le sezioni del libro (mappa degli strumenti trattati)
