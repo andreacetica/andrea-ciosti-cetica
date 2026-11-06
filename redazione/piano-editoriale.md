@@ -80,7 +80,7 @@ English text (markdown)…
 - [x] lezione | Le ghost notes: il segreto dei groove che "respirano"
 - [x] lezione | Il groove a sedicesimi: dal rock al funk in 4 passaggi
 - [x] lezione | L'indipendenza mani-piedi: esercizi graduali per principianti
-- [ ] lezione | Accordare la batteria: le basi per un suono che funziona
+- [x] lezione | Accordare la batteria: le basi per un suono che funziona
 - [ ] lezione | Xilofono: le prime scale a due bacchette
 - [ ] lezione | Il flam: il rudimento che dà "spessore" al colpo
 - [ ] lezione | Leggere la batteria: le note sul pentagramma in 10 minuti
@@ -109,7 +109,7 @@ English text (markdown)…
 - [x] storia | Buddy Rich: tecnica, velocità e carattere
 - [x] nozione | Timpani, rullante, grancassa: le percussioni dell'orchestra spiegate semplici
 - [x] nozione | Bacchette: legno, punta, peso — come scegliere quelle giuste
-- [ ] storia | Tony Williams: il ragazzo che rivoluzionò il jazz a 17 anni
+- [x] storia | Tony Williams: il ragazzo che rivoluzionò il jazz a 17 anni
 - [ ] storia | Steve Gadd e il groove di "50 Ways to Leave Your Lover"
 - [ ] nozione | Le percussioni latine: congas, bongos, timbales e il ruolo della clave
 - [ ] storia | Evelyn Glennie: la percussionista che ascolta con tutto il corpo
@@ -158,6 +158,8 @@ English text (markdown)…
 - 2026-10-23 — nozione — Timpani, rullante, grancassa: le percussioni dell'orchestra spiegate semplici — content/articoli/percussioni-orchestra.md
 - 2026-10-30 — lezione — Indipendenza mani-piedi alla batteria: esercizi graduali per principianti — content/articoli/indipendenza-mani-piedi.md
 - 2026-10-30 — nozione — Le storie dietro le tue bacchette: un timpanista, un batterista di Niagara Falls e le sigle 5A e 7A — content/articoli/bacchette-batteria.md
+- 2026-11-06 — lezione — Accordare la batteria: perché il tuo tom suona come una scatola (e come sistemarlo) — content/articoli/accordare-batteria.md
+- 2026-11-06 — storia — Tony Williams: il ragazzo che a 17 anni entrò nel quintetto di Miles Davis — content/articoli/tony-williams.md
 
 ## SEO (per farsi trovare su Google)
 

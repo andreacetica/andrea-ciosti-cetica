@@ -26,3 +26,5 @@
 - percussioni-orchestra
 - indipendenza-mani-piedi
 - bacchette-batteria
+- accordare-batteria
+- tony-williams
